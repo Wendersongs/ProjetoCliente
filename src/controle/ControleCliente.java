@@ -34,7 +34,7 @@ public class ControleCliente {
            String msg = "ClientesJuridicos#2#vaisifude";
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
-            System.out.println(msg);
+            System.out.println(msgRecebido);
             return msg;
         } catch (Exception erro) {
             throw erro;

@@ -362,21 +362,8 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
             
             ClientesJuridicos clienteJuridico = new ClientesJuridicos ();
             
-            conexao.receberDadosPersistencia(clienteJuridico, 2);
-            
-            String cnpj = jFormattedTextField1_CNPJ.getText();
-            String endereco = jTextField1_Endereco.getText();
-            String numero = jTextField1_Numero.getText();
-            String bairro = jTextField1_Bairro.getText();
-            String cidade = jTextField1_Cidade.getText();
-            String uf = jTextField1_UF.getText();
-            String cep = jFormattedTextField1_CEP.getText();
-            String nomeFantasia = jFormattedTextField1_NomeFantasia.getText();
-            String razaoSocial = jTextField1_RazaoSocial.getText();
-            String inscricaoEstadual = jFormattedTextField1_InscricaoEstadual.getText();
-            String email = jTextField1_Email.getText();
-            String contato = jFormattedTextField1_Contato.getText();
-            String id = "";
+            JOptionPane.showMessageDialog(this,conexao.receberDadosPersistencia(clienteJuridico, 2));
+  
  
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
