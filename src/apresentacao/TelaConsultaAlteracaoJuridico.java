@@ -6,8 +6,10 @@
 package apresentacao;
 
 import controle.ControleCliente;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import modelos.ClientesJuridicos;
 import modelos.TableModelPJ;
@@ -351,11 +353,23 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
         
         try {
             ControleCliente conexao = ControleCliente.getInstance();
+            ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             txt = conexao.receberDadosPersistencia(clienteJuridico, 2);
-            TableModel model = new TableModelPJ(conexao.recuperar(txt));
-            JTable table = new JTable(model);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("cnpj");
+            modelo.addColumn("Nome de Fantasia");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
             
-            jTable1 = table;
+                  for (ClientesJuridicos a :lista) {
+                      
+                  modelo.addRow(new Object[]{a.getId(),a.getInscricaoEstadual(),a.getNomeFantasia()});
+   
+                  }
  
            
 

@@ -57,7 +57,7 @@ public class ClientesJuridicos extends Pessoa implements Dados {
 
     @Override
     public String desmontarObjeto() {
-        return this.id+";"+this.cnpj+";"+this.razaoSocial+";"+this.nomeFantasia+";"+this.inscricaoEstadual+";"+this.endereco+";"+this.num+";"+this.bairro+";"+this.cidade+";"+this.uf+";"+this.cep+";"+this.email+";"+this.contato+"#";
+        return this.id+";"+this.getCnpj()+";"+this.getRazaoSocial()+";"+this.getNomeFantasia()+";"+this.getInscricaoEstadual()+";"+this.endereco+";"+this.num+";"+this.bairro+";"+this.cidade+";"+this.uf+";"+this.cep+";"+this.email+";"+this.contato+"#";
     }
 
     @Override
@@ -65,10 +65,10 @@ public class ClientesJuridicos extends Pessoa implements Dados {
         try {
             String vetorString[] = stringDados.split(";");
             this.id = vetorString[0];
-            this.cnpj = vetorString[1];
-            this.razaoSocial = vetorString[2];
-            this.nomeFantasia = vetorString[3];
-            this.inscricaoEstadual = vetorString[4];
+            this.setCnpj(vetorString[1]);
+            this.setRazaoSocial(vetorString[2]);
+            this.setNomeFantasia(vetorString[3]);
+            this.setInscricaoEstadual(vetorString[4]);
             this.endereco = vetorString[5];
             this.num = vetorString[6];
             this.bairro = vetorString[7];
@@ -81,6 +81,62 @@ public class ClientesJuridicos extends Pessoa implements Dados {
         } catch (Exception e) {
             throw new Exception("Erro no metodo montarObjeto do Cliente");
         }
+    }
+
+    /**
+     * @return the cnpj
+     */
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    /**
+     * @param cnpj the cnpj to set
+     */
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    /**
+     * @return the razaoSocial
+     */
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    /**
+     * @param razaoSocial the razaoSocial to set
+     */
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    /**
+     * @return the nomeFantasia
+     */
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
+    /**
+     * @param nomeFantasia the nomeFantasia to set
+     */
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
+    }
+
+    /**
+     * @return the inscricaoEstadual
+     */
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
+    }
+
+    /**
+     * @param inscricaoEstadual the inscricaoEstadual to set
+     */
+    public void setInscricaoEstadual(String inscricaoEstadual) {
+        this.inscricaoEstadual = inscricaoEstadual;
     }
     
 }
