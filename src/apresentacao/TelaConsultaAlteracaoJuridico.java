@@ -19,7 +19,7 @@ import modelos.TableModelPJ;
  * @author Kevin
  */
 public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
-
+ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     /**
      * Creates new form TelaConsultaAlteracaoJuridico
      */
@@ -166,6 +166,11 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Consulta/Alteracao de Pessoa Juridica");
 
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -353,7 +358,7 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
         
         try {
             ControleCliente conexao = ControleCliente.getInstance();
-            ArrayList<ClientesJuridicos> lista = new ArrayList<>();
+            
             txt = conexao.receberDadosPersistencia(clienteJuridico, 2);
             lista = conexao.recuperar(txt);
             DefaultTableModel modelo = new DefaultTableModel();
@@ -383,6 +388,13 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
         jButton1_Salvar.setEnabled(true);
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (ClientesJuridicos a :lista) {
+            jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
