@@ -39,12 +39,13 @@ public class ControleCliente {
             BufferedReader br = new BufferedReader(targetReader);
             String linha = "";
             ClientesJuridicos objetoClientes = new ClientesJuridicos();
-            targetReader.close();
+            linha=br.readLine();
             while((linha=br.readLine())!=null){
                 
                 objetoClientes.montarObjeto(linha);
                 pilhaDeClientes.add(objetoClientes);
             }
+            targetReader.close();
             br.close();
             return pilhaDeClientes;
         } catch (Exception erro) {
