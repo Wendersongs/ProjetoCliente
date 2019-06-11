@@ -7,7 +7,10 @@ package apresentacao;
 
 import controle.ControleCliente;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
 import modelos.ClientesJuridicos;
+import modelos.TableModelPJ;
 
 /**
  *
@@ -161,17 +164,6 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Consulta/Alteracao de Pessoa Juridica");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -353,14 +345,22 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
 
     private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
         jButton2_Alterar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        ClientesJuridicos clienteJuridico = new ClientesJuridicos ();
+        
         try {
             ControleCliente conexao = ControleCliente.getInstance();
+            txt = conexao.receberDadosPersistencia(clienteJuridico, 2);
+            TableModel model = new TableModelPJ(conexao.recuperar(txt));
+            JTable table = new JTable(model);
             
+            jTable1 = table;
  
            
 
             
-            ClientesJuridicos clienteJuridico = new ClientesJuridicos ();
+           
             
             JOptionPane.showMessageDialog(this,conexao.receberDadosPersistencia(clienteJuridico, 2));
   

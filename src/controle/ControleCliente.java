@@ -1,12 +1,18 @@
 package controle;
 import comunicacao.ClienteTCP;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelos.ClientesJuridicos;
 import modelos.Dados;
 public class ControleCliente {
 
     private static ControleCliente objCtrl;
     private ClienteTCP ligacaoCliente = null;
+    private Object CharSource;
 
     private ControleCliente() throws IOException {
         ligacaoCliente = new ClienteTCP("127.0.0.1", 7777);
@@ -26,6 +32,25 @@ public class ControleCliente {
         }
     }
     
+        public ArrayList<ClientesJuridicos> recuperar(String fr) throws Exception {
+        try {
+            ArrayList<ClientesJuridicos> pilhaDeClientes = new ArrayList<>();
+            Reader targetReader = new StringReader(fr);
+            targetReader.close();
+            BufferedReader br = new BufferedReader(targetReader);
+            String linha = "";
+            
+            while((linha=br.readLine())!=null){
+                ClientesJuridicos objetoClientes = new ClientesJuridicos();
+                objetoClientes.montarObjeto(linha);
+                pilhaDeClientes.add(objetoClientes);
+            }
+            br.close();
+            return pilhaDeClientes;
+        } catch (Exception erro) {
+            throw erro;
+        }
+    }
     
     public String receberDadosPersistencia(Object objeto, int operacao) throws Exception {
         
@@ -35,12 +60,14 @@ public class ControleCliente {
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
             System.out.println(msgRecebido);
-            return msg;
+            return msgRecebido;
         } catch (Exception erro) {
             throw erro;
         }
        
     }
+    
+    
     
     public static ControleCliente getInstance() throws IOException{
         if(objCtrl == null){
