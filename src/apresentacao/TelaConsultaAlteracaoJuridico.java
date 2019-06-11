@@ -370,13 +370,9 @@ public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
                   modelo.addRow(new Object[]{a.getId(),a.getInscricaoEstadual(),a.getNomeFantasia()});
    
                   }
- 
-           
-
+       
             
-           
             
-            JOptionPane.showMessageDialog(this,conexao.receberDadosPersistencia(clienteJuridico, 2));
   
  
         } catch (Exception erro) {
