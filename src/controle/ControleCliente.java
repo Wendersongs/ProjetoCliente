@@ -13,6 +13,7 @@ public class ControleCliente {
     private static ControleCliente objCtrl;
     private ClienteTCP ligacaoCliente = null;
     private Object CharSource;
+  
 
     private ControleCliente() throws IOException {
         ligacaoCliente = new ClienteTCP("127.0.0.1", 7777);

@@ -6,6 +6,7 @@
 package apresentacao;
 
 import controle.ControleCliente;
+import controle.Utils;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -20,6 +21,7 @@ import modelos.TableModelPJ;
  */
 public class TelaConsultaAlteracaoJuridico extends javax.swing.JFrame {
 ArrayList<ClientesJuridicos> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /**
      * Creates new form TelaConsultaAlteracaoJuridico
      */
@@ -70,6 +72,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jTextField_ID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -199,7 +202,9 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
                                         .addGap(29, 29, 29)
                                         .addComponent(jButton1_Consultar)
                                         .addGap(50, 50, 50)
-                                        .addComponent(jButton2_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton2_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(21, 21, 21)
@@ -216,16 +221,11 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41))))
+                                .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -254,7 +254,8 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
                                     .addComponent(jTextField1_RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(103, 103, 103)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -265,7 +266,9 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1_lbCNPJ)
                     .addComponent(jFormattedTextField1_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,10 +319,9 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1_Consultar)
                     .addComponent(jButton1_Salvar)
-                    .addComponent(jButton2_Alterar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1_Cancelar)
-                .addGap(18, 18, 18)
+                    .addComponent(jButton2_Alterar)
+                    .addComponent(jButton1_Cancelar))
+                .addGap(52, 52, 52)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
@@ -387,6 +389,33 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
 
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
         jButton1_Salvar.setEnabled(true);
+        try{    
+            ControleCliente conexao = ControleCliente.getInstance();
+            String cnpj = util.limpaCaracteres(jFormattedTextField1_CNPJ.getText());
+            String endereco = util.limpaCaracteres(jTextField1_Endereco.getText());
+            String numero = util.limpaCaracteres(jTextField1_Numero.getText());
+            String bairro = util.limpaCaracteres(jTextField1_Bairro.getText());
+            String cidade = util.limpaCaracteres(jTextField1_Cidade.getText());
+            String uf = util.limpaCaracteres(jTextField1_UF.getText());
+            String cep = util.limpaCaracteres(jFormattedTextField1_CEP.getText());
+            String nomeFantasia = util.limpaCaracteres(jFormattedTextField1_NomeFantasia.getText());
+            String razaoSocial = util.limpaCaracteres(jTextField1_RazaoSocial.getText());
+            String inscricaoEstadual = util.limpaCaracteres(jFormattedTextField1_InscricaoEstadual.getText());
+            String email = util.limpaCaracteres(jTextField1_Email.getText());
+            String contato = util.limpaCaracteres(jFormattedTextField1_Contato.getText());
+            String id = util.limpaCaracteres(jTextField_ID.getText());
+           
+
+            
+            ClientesJuridicos clienteJuridico = new ClientesJuridicos ( id, cnpj,  razaoSocial,  nomeFantasia,  inscricaoEstadual,  endereco,  numero,  bairro,  cidade,  uf,  cep,    email,  contato);
+            
+            conexao.incluirDadosPersistencia(clienteJuridico, 1);
+            
+            } catch (Exception erro) {
+            
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -395,15 +424,18 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (b.toString() == a.getId().toString()){
                 
-                jFormattedTextField1_CNPJ.setValue(a.getCnpj());
-                jFormattedTextField1_InscricaoEstadual.setValue(a.getInscricaoEstadual());
-                jFormattedTextField1_NomeFantasia.setValue(a.getNomeFantasia());
-                jFormattedTextField1_Contato.setValue(a.getCelular());
-                jTextField1_RazaoSocial.setText(a.getRazaoSocial());
-                jTextField1_Email.setText(a.getEmail());
-                jFormattedTextField1_CEP.setValue(a.getCep());
-                jTextField1_UF.setText(a.getUf());
-                jTextField1_Endereco.setText(a.getEndereco());
+                jFormattedTextField1_CNPJ.setValue(util.limpaCaracteres(a.getCnpj()));
+                jFormattedTextField1_InscricaoEstadual.setValue(util.limpaCaracteres(a.getInscricaoEstadual()));
+                jFormattedTextField1_NomeFantasia.setValue(util.limpaCaracteres(a.getNomeFantasia()));
+                jFormattedTextField1_Contato.setValue(util.limpaCaracteres(a.getCelular()));
+                jTextField1_RazaoSocial.setText(util.limpaCaracteres(a.getRazaoSocial()));
+                jTextField1_Email.setText(util.limpaCaracteres(a.getEmail()));
+                jFormattedTextField1_CEP.setValue(util.limpaCaracteres(a.getCep()));
+                jTextField1_UF.setText(util.limpaCaracteres(a.getUf()));
+                jTextField1_Endereco.setText(util.limpaCaracteres(a.getEndereco()));
+                jTextField1_Numero.setText(util.limpaCaracteres(a.getNumero()));
+                jTextField1_Bairro.setText(util.limpaCaracteres(a.getBairro()));
+                jTextField_ID.setText(util.limpaCaracteres(a.getId()));
                 
     
                 
@@ -479,5 +511,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     private javax.swing.JTextField jTextField1_Numero;
     private javax.swing.JTextField jTextField1_RazaoSocial;
     private javax.swing.JTextField jTextField1_UF;
+    private javax.swing.JTextField jTextField_ID;
     // End of variables declaration//GEN-END:variables
 }
