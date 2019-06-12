@@ -391,19 +391,19 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jButton1_Salvar.setEnabled(true);
         try{    
             ControleCliente conexao = ControleCliente.getInstance();
-            String cnpj = util.limpaCaracteres(jFormattedTextField1_CNPJ.getText());
-            String endereco = util.limpaCaracteres(jTextField1_Endereco.getText());
-            String numero = util.limpaCaracteres(jTextField1_Numero.getText());
-            String bairro = util.limpaCaracteres(jTextField1_Bairro.getText());
-            String cidade = util.limpaCaracteres(jTextField1_Cidade.getText());
-            String uf = util.limpaCaracteres(jTextField1_UF.getText());
-            String cep = util.limpaCaracteres(jFormattedTextField1_CEP.getText());
-            String nomeFantasia = util.limpaCaracteres(jFormattedTextField1_NomeFantasia.getText());
-            String razaoSocial = util.limpaCaracteres(jTextField1_RazaoSocial.getText());
-            String inscricaoEstadual = util.limpaCaracteres(jFormattedTextField1_InscricaoEstadual.getText());
-            String email = util.limpaCaracteres(jTextField1_Email.getText());
-            String contato = util.limpaCaracteres(jFormattedTextField1_Contato.getText());
-            String id = util.limpaCaracteres(jTextField_ID.getText());
+            String cnpj = jFormattedTextField1_CNPJ.getText();
+            String endereco = jTextField1_Endereco.getText();
+            String numero = jTextField1_Numero.getText();
+            String bairro = jTextField1_Bairro.getText();
+            String cidade = jTextField1_Cidade.getText();
+            String uf = jTextField1_UF.getText();
+            String cep = jFormattedTextField1_CEP.getText();
+            String nomeFantasia = jFormattedTextField1_NomeFantasia.getText();
+            String razaoSocial = jTextField1_RazaoSocial.getText();
+            String inscricaoEstadual = jFormattedTextField1_InscricaoEstadual.getText();
+            String email = jTextField1_Email.getText();
+            String contato = jFormattedTextField1_Contato.getText();
+            String id = jTextField_ID.getText();
            
 
             
@@ -424,18 +424,18 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (b.toString() == a.getId().toString()){
                 
-                jFormattedTextField1_CNPJ.setValue(util.limpaCaracteres(a.getCnpj()));
-                jFormattedTextField1_InscricaoEstadual.setValue(util.limpaCaracteres(a.getInscricaoEstadual()));
-                jFormattedTextField1_NomeFantasia.setValue(util.limpaCaracteres(a.getNomeFantasia()));
-                jFormattedTextField1_Contato.setValue(util.limpaCaracteres(a.getCelular()));
-                jTextField1_RazaoSocial.setText(util.limpaCaracteres(a.getRazaoSocial()));
-                jTextField1_Email.setText(util.limpaCaracteres(a.getEmail()));
-                jFormattedTextField1_CEP.setValue(util.limpaCaracteres(a.getCep()));
-                jTextField1_UF.setText(util.limpaCaracteres(a.getUf()));
-                jTextField1_Endereco.setText(util.limpaCaracteres(a.getEndereco()));
-                jTextField1_Numero.setText(util.limpaCaracteres(a.getNumero()));
-                jTextField1_Bairro.setText(util.limpaCaracteres(a.getBairro()));
-                jTextField_ID.setText(util.limpaCaracteres(a.getId()));
+                jFormattedTextField1_CNPJ.setValue(a.getCnpj());
+                jFormattedTextField1_InscricaoEstadual.setValue(a.getInscricaoEstadual());
+                jFormattedTextField1_NomeFantasia.setValue(a.getNomeFantasia());
+                jFormattedTextField1_Contato.setValue(a.getTelefone());
+                jTextField1_RazaoSocial.setText(a.getRazaoSocial());
+                jTextField1_Email.setText(a.getEmail());
+                jFormattedTextField1_CEP.setValue(a.getCep());
+                jTextField1_UF.setText(a.getUf());
+                jTextField1_Endereco.setText(a.getEndereco());
+                jTextField1_Numero.setText(a.getNumero());
+                jTextField1_Bairro.setText(a.getBairro());
+                jTextField_ID.setText(a.getId());
                 
     
                 
