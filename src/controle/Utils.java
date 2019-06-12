@@ -13,7 +13,6 @@ public class Utils {
     
     public String limpaCaracteres(String text) { 
 		
-		
 	    return text.replaceAll("[ãâàáä]", "a")   
 	                .replaceAll("[êèéë]", "e")   
 	                .replaceAll("[îìíï]", "i")   
