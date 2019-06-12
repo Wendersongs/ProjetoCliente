@@ -371,7 +371,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
             
                   for (ClientesJuridicos a :lista) {
-                      
+                    
                   modelo.addRow(new Object[]{a.getId(),a.getInscricaoEstadual(),a.getNomeFantasia()});
    
                   }

@@ -38,10 +38,10 @@ public class ControleCliente {
             Reader targetReader = new StringReader(fr);
             BufferedReader br = new BufferedReader(targetReader);
             String linha = "";
-            ClientesJuridicos objetoClientes = new ClientesJuridicos();
+            
             linha=br.readLine();
             while((linha=br.readLine())!=null){
-                
+                ClientesJuridicos objetoClientes = new ClientesJuridicos();  
                 objetoClientes.montarObjeto(linha);
                 pilhaDeClientes.add(objetoClientes);
             }
