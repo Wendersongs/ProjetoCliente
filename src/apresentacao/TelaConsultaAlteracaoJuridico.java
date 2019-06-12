@@ -393,6 +393,21 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
         for (ClientesJuridicos a :lista) {
             jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (b.toString() == a.getId().toString()){
+                
+                jFormattedTextField1_CNPJ.setValue(a.getCnpj());
+                jFormattedTextField1_InscricaoEstadual.setValue(a.getInscricaoEstadual());
+                jFormattedTextField1_NomeFantasia.setValue(a.getNomeFantasia());
+                jFormattedTextField1_Contato.setValue(a.getCelular());
+                jTextField1_RazaoSocial.setText(a.getRazaoSocial());
+                jTextField1_Email.setText(a.getEmail());
+                jFormattedTextField1_CEP.setValue(a.getCep());
+                jTextField1_UF.setText(a.getUf());
+                jTextField1_Endereco.setText(a.getEndereco());
+                
+    
+                
+            }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
