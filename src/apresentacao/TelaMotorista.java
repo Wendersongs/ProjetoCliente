@@ -5,7 +5,7 @@
  */
 package apresentacao;
 
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -163,7 +163,7 @@ public class TelaMotorista extends javax.swing.JFrame {
 
         try {
             
-                        ControleCliente conexao = ControleCliente.getInstance();
+                        ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
                         String nome = jTextField1_Nome.getText();
                         String cpf = jFormattedTextField1_CPF.getText();
                         String cnh = jFormattedTextField1_cnh.getText();

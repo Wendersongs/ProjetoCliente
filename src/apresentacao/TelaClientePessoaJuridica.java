@@ -5,7 +5,7 @@
  */
 package apresentacao;
 
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -233,7 +233,7 @@ public class TelaClientePessoaJuridica extends javax.swing.JFrame {
 
     private void jButton1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CadastrarActionPerformed
       try {
-            ControleCliente conexao = ControleCliente.getInstance();
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             
             String cnpj = jFormattedTextField1_CNPJ.getText();
             String endereco = jTextField1_Endereco.getText();

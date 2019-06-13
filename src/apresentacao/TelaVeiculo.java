@@ -5,7 +5,7 @@
  */
 package apresentacao;
 
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -229,7 +229,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
         try {
 
-            ControleCliente conexao = ControleCliente.getInstance();
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
 
             String nomeDaMarca = jComboBox1_Marca.getActionCommand();
             String categoria = (String) jComboBox2_Categoria.getSelectedItem();

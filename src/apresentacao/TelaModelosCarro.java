@@ -5,7 +5,7 @@
  */
 package apresentacao;
 
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import javax.swing.JOptionPane;
 import modelos.ModelosCarro;
 
@@ -139,7 +139,7 @@ this.dispose();        // TODO add your handling code here:
     private void jButton1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CadastrarActionPerformed
        
         try {
-             ControleCliente conexao = ControleCliente.getInstance();
+             ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             
             String id ="";
             String nomeDoModelo = jFormattedTextField1_NomeModelo.getText();

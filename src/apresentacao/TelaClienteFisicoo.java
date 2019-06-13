@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package apresentacao;
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -305,7 +305,7 @@ public class TelaClienteFisicoo extends javax.swing.JFrame {
 
     private void jButton1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CadastrarActionPerformed
         try {
-            ControleCliente conexao = ControleCliente.getInstance();
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             
             String nome = jFormattedTextField1_Nome.getText();
             String endereco = jFormattedTextField6_Endereco.getText();

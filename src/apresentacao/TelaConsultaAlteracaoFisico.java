@@ -5,12 +5,21 @@
  */
 package apresentacao;
 
+import controle.ControleClienteFisico;
+import controle.ControleClienteJuridico;
+import controle.Utils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.ClientesFisicos;
+
 /**
  *
  * @author Kevin
  */
 public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
-
+ArrayList<ClientesFisicos> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /**
      * Creates new form TelaConsultaAlteracaoFisico
      */
@@ -40,13 +49,13 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jFormattedTextField3_DataNascimento = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField4_Email = new javax.swing.JFormattedTextField();
+        jFormattedTextField5_Email = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField5_Celular = new javax.swing.JFormattedTextField();
-        jFormattedTextField6_Telefone = new javax.swing.JFormattedTextField();
+        jFormattedTextField4_Celular = new javax.swing.JFormattedTextField();
+        jFormattedTextField7_Telefone = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextField7_Endereco = new javax.swing.JFormattedTextField();
+        jFormattedTextField6_Endereco = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jFormattedTextField8_CEP = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -63,6 +72,8 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
         jButton1_Consultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        jFormattedTextField1_ID = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 600));
@@ -100,13 +111,13 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
         jLabel7.setText("Celular:");
 
         try {
-            jFormattedTextField5_Celular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
+            jFormattedTextField4_Celular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         try {
-            jFormattedTextField6_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            jFormattedTextField7_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -173,22 +184,12 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel15.setText("ID:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jLabel1))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jFormattedTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel4)
-                .addGap(61, 61, 61)
-                .addComponent(jComboBox1_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel3)
@@ -202,20 +203,20 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addComponent(jLabel6)
                 .addGap(35, 35, 35)
-                .addComponent(jFormattedTextField4_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFormattedTextField5_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jFormattedTextField5_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jFormattedTextField4_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jFormattedTextField7_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFormattedTextField6_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jFormattedTextField6_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jFormattedTextField7_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel10)
@@ -251,13 +252,40 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jFormattedTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(61, 61, 61)
+                        .addComponent(jComboBox1_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel1))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jFormattedTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,8 +304,8 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
                             .addComponent(jLabel5))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField4_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField5_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField5_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField4_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,8 +313,8 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
                             .addComponent(jLabel7))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField7_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField6_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField6_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField7_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,11 +376,91 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
 
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
       jButton1_Salvar.setEnabled(true);
+      
+       try {
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+            
+            String nome = jFormattedTextField1_Nome.getText();
+            String endereco = jFormattedTextField6_Endereco.getText();
+            String numero = jFormattedTextField11_Numero.getText();
+            String bairro = jFormattedTextField12_Bairro.getText();
+            String cidade = jFormattedTextField9_Cidade.getText();
+            String uf = jFormattedTextField10_UF.getText();
+            String cep = jFormattedTextField8_CEP.getText();
+            String sexo = (String) jComboBox1_Sexo.getSelectedItem();
+            String dataNascimento = jFormattedTextField3_DataNascimento.getText();
+            String cpf = jFormattedTextField2_CPF.getText();
+            String email = jFormattedTextField5_Email.getText();
+            String contato = jFormattedTextField7_Telefone.getText();
+            String celular = jFormattedTextField4_Celular.getText();
+            String id =jFormattedTextField1_ID.getText();
+            
+            ClientesFisicos clienteFisico = new ClientesFisicos ( id ,  nome, sexo,  endereco,  numero,  bairro,  cidade,  uf, cep,   dataNascimento,   cpf,   email, contato,  celular);
+            
+            
+            conexao.incluirDadosPersistencia(clienteFisico, 1);
+
+            jFormattedTextField1_Nome.setText("");
+           jFormattedTextField6_Endereco.setText("");
+            jFormattedTextField11_Numero.setText("");
+            jFormattedTextField12_Bairro.setText("");
+             jFormattedTextField9_Cidade.setText("");
+             jFormattedTextField10_UF.setText("");
+             jFormattedTextField8_CEP.setText("");
+             jFormattedTextField3_DataNascimento.setText("");
+            jFormattedTextField2_CPF.setText("");
+             jFormattedTextField5_Email.setText("");
+             jFormattedTextField7_Telefone.setText("");
+             jFormattedTextField4_Celular.setText("");
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+      
+      
+      
+      
+      
+      
+      
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
     private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
 
         jButton2_Alterar.setEnabled(true);
+        
+        
+        jTable1.setVisible(true);
+        String txt = "";
+        ClientesFisicos clienteFisico = new ClientesFisicos ();
+        
+        try {
+            ControleClienteFisico conexao = ControleClienteFisico.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(clienteFisico, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("cpf");
+            modelo.addColumn("Nome Completo");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (ClientesFisicos a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getCpf(),a.getNome()});
+   
+                  }
+       
+            
+            
+  
+ 
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
     }//GEN-LAST:event_jButton1_ConsultarActionPerformed
 
     /**
@@ -399,13 +507,14 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField10_UF;
     private javax.swing.JFormattedTextField jFormattedTextField11_Numero;
     private javax.swing.JFormattedTextField jFormattedTextField12_Bairro;
+    private javax.swing.JFormattedTextField jFormattedTextField1_ID;
     private javax.swing.JFormattedTextField jFormattedTextField1_Nome;
     private javax.swing.JFormattedTextField jFormattedTextField2_CPF;
     private javax.swing.JFormattedTextField jFormattedTextField3_DataNascimento;
-    private javax.swing.JFormattedTextField jFormattedTextField4_Email;
-    private javax.swing.JFormattedTextField jFormattedTextField5_Celular;
-    private javax.swing.JFormattedTextField jFormattedTextField6_Telefone;
-    private javax.swing.JFormattedTextField jFormattedTextField7_Endereco;
+    private javax.swing.JFormattedTextField jFormattedTextField4_Celular;
+    private javax.swing.JFormattedTextField jFormattedTextField5_Email;
+    private javax.swing.JFormattedTextField jFormattedTextField6_Endereco;
+    private javax.swing.JFormattedTextField jFormattedTextField7_Telefone;
     private javax.swing.JFormattedTextField jFormattedTextField8_CEP;
     private javax.swing.JFormattedTextField jFormattedTextField9_Cidade;
     private javax.swing.JLabel jLabel1;
@@ -414,6 +523,7 @@ public class TelaConsultaAlteracaoFisico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

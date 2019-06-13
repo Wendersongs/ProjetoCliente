@@ -5,7 +5,7 @@
  */
 package apresentacao;
 
-import controle.ControleCliente;
+import controle.ControleClienteJuridico;
 import controle.Utils;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -169,7 +169,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             }
         });
 
-        jFormattedTextField1_CNPJ.setEditable(false);
         try {
             jFormattedTextField1_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####")));
         } catch (java.text.ParseException ex) {
@@ -193,6 +192,15 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Consulta/Alteracao de Pessoa Juridica");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable1.setEnabled(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -378,7 +386,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     
          jButton1_Salvar.setEnabled(true);
         try{    
-            ControleCliente conexao = ControleCliente.getInstance();
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             String cnpj = jFormattedTextField1_CNPJ.getText();
             String endereco = jTextField1_Endereco.getText();
             String numero = jTextField1_Numero.getText();
@@ -437,7 +445,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         ClientesJuridicos clienteJuridico = new ClientesJuridicos ();
         
         try {
-            ControleCliente conexao = ControleCliente.getInstance();
+            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             
             txt = conexao.receberDadosPersistencia(clienteJuridico, 2);
             lista = conexao.recuperar(txt);
