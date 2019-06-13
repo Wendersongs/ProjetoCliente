@@ -58,7 +58,7 @@ public class ControleClienteJuridico {
         
         try {
             Dados dado = (Dados) objeto;
-           String msg = "ClientesJuridicos#2#";
+           String msg = "ClientesJuridicos#2#qualquercoisa";
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
             System.out.println(msgRecebido);

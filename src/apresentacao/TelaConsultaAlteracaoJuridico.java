@@ -27,6 +27,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
      */
     public TelaConsultaAlteracaoJuridico() {
         initComponents();
+        jTable1.setRowSelectionAllowed(true);
         jButton2_Alterar.setEnabled(false);
         jButton1_Salvar.setEnabled(false);
         
@@ -200,7 +201,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
 
             }
         ));
-        jTable1.setEnabled(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -494,6 +494,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+              
         String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
         for (ClientesJuridicos a :lista) {
             jTable1.getValueAt(jTable1.getSelectedRow(), 0);
