@@ -38,6 +38,8 @@ public class TelaConsultaAlteracaoMarcas extends javax.swing.JFrame {
         jButton2_Cancelar = new javax.swing.JButton();
         jButton1_ConsultarDados = new javax.swing.JButton();
         jButton1_Alterar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -79,6 +81,19 @@ public class TelaConsultaAlteracaoMarcas extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,6 +124,10 @@ public class TelaConsultaAlteracaoMarcas extends javax.swing.JFrame {
                         .addGap(180, 180, 180)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(178, 178, 178))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +147,9 @@ public class TelaConsultaAlteracaoMarcas extends javax.swing.JFrame {
                     .addComponent(jButton2_Cancelar)
                     .addComponent(jButton1_ConsultarDados)
                     .addComponent(jButton1_Alterar))
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,6 +215,8 @@ public class TelaConsultaAlteracaoMarcas extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField1_NomeDaMarca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1_EnderecoAnexo;
     // End of variables declaration//GEN-END:variables
 }

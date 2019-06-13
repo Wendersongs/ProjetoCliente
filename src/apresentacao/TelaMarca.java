@@ -23,6 +23,7 @@ public class TelaMarca extends javax.swing.JFrame {
      */
     public TelaMarca() {
         initComponents();
+        jTextField1_EnderecoAnexo.setText("A");
     }
 
     /**
@@ -139,8 +140,9 @@ public class TelaMarca extends javax.swing.JFrame {
              
              String nomeDaMarca = jFormattedTextField1_NomeDaMarca.getText();
              String enderecoAnexo = jTextField1_EnderecoAnexo.getText();
+             String id ="";
              
-             Marcas marca = new Marcas (nomeDaMarca , enderecoAnexo);
+             Marcas marca = new Marcas (id, nomeDaMarca , enderecoAnexo);
              
              conexao.incluirDadosPersistencia(marca , 1);
              
@@ -151,6 +153,7 @@ public class TelaMarca extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, e.getMessage());
 
         }
+        jTextField1_EnderecoAnexo.setText("A");
     }//GEN-LAST:event_jButton1_CadastrarActionPerformed
 
     private void jButton2_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_CancelarActionPerformed

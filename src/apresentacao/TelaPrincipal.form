@@ -92,6 +92,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cliente Fisico"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5_ConsultaClienteFisicoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6_ConsultaClienteJuridico">
               <Properties>
@@ -105,11 +108,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Motorista"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7_ConsultaMotoristaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8_ConsultaVeiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Veiculo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8_ConsultaVeiculoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9_ConsultaModelo">
               <Properties>
@@ -120,6 +129,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Marca"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10_ConsultaMarcaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5_ConsultaContratos">
               <Properties>

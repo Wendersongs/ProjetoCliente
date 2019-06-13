@@ -185,7 +185,7 @@ public class TelaMotorista extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, e.getMessage());
 
         }
-        
+        jTextField1_enderecoFoto.setText("A ");
         
     }//GEN-LAST:event_jButton2_CadastrarActionPerformed
 
