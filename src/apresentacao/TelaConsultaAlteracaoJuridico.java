@@ -29,6 +29,21 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         initComponents();
         jButton2_Alterar.setEnabled(false);
         jButton1_Salvar.setEnabled(false);
+        
+    jFormattedTextField1_CEP.setEditable(false);
+    jFormattedTextField1_CNPJ.setEditable(false);
+    jFormattedTextField1_Contato.setEditable(false);
+    jFormattedTextField1_InscricaoEstadual.setEditable(false);
+    jFormattedTextField1_NomeFantasia.setEditable(false);
+    jTextField_ID.setEditable(false);
+    jTextField1_UF.setEditable(false);
+    jTextField1_RazaoSocial.setEditable(false);
+    jTextField1_Numero.setEditable(false);
+    jTextField1_Endereco.setEditable(false);
+    jTextField1_Email.setEditable(false);
+    jTextField1_Cidade.setEditable(false);
+    jTextField1_Bairro.setEditable(false);
+        
     }
 
     /**
@@ -59,7 +74,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jLabel3 = new javax.swing.JLabel();
         jTextField1_Numero = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1_UF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField1_Bairro = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -73,6 +87,8 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField_ID = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1_UF = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -98,6 +114,11 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1_Contato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1_ContatoActionPerformed(evt);
+            }
+        });
 
         jLabel1_lbEmail.setText("E-mail:");
 
@@ -121,8 +142,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
 
         jLabel5.setText("UF:");
 
-        jTextField1_UF.setText(" ");
-
         jLabel6.setText("Bairro:");
 
         jTextField1_Bairro.setText(" ");
@@ -130,6 +149,11 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jLabel7.setText("Cidade:");
 
         jTextField1_Cidade.setText(" ");
+        jTextField1_Cidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1_CidadeActionPerformed(evt);
+            }
+        });
 
         jButton1_Salvar.setText("Salvar");
         jButton1_Salvar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +200,8 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel8.setText("ID: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,147 +209,152 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel1_lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField1_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jFormattedTextField1_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jButton1_Consultar)
-                                        .addGap(50, 50, 50)
-                                        .addComponent(jButton2_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jTextField1_Bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jTextField1_Cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField1_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1_lbCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jFormattedTextField1_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2_lbNomeFant, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jFormattedTextField1_NomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3_lbInscriEst)
-                                        .addGap(14, 14, 14)
-                                        .addComponent(jFormattedTextField1_InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jLabel4_lbContato, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(7, 7, 7))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel1_lbRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField1_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1_RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
+                                .addGap(57, 57, 57)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1_lbCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(jFormattedTextField1_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1_lbRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1_RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3_lbInscriEst)
+                        .addGap(21, 21, 21)
+                        .addComponent(jFormattedTextField1_InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(jFormattedTextField1_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jTextField1_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jTextField1_Bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jTextField1_Cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1_Consultar)
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton2_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1_lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)
+                                .addComponent(jTextField1_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2_lbNomeFant, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addComponent(jFormattedTextField1_NomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel4_lbContato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jFormattedTextField1_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1_lbCNPJ)
-                    .addComponent(jFormattedTextField1_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1_RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1_lbRazao))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1_NomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2_lbNomeFant))
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3_lbInscriEst))
-                    .addComponent(jFormattedTextField1_InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel1_lbCNPJ))
+                    .addComponent(jFormattedTextField1_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1_lbRazao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1_RazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2_lbNomeFant)
+                    .addComponent(jFormattedTextField1_NomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel4_lbContato))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(3, 3, 3)
                         .addComponent(jFormattedTextField1_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3_lbInscriEst)
+                    .addComponent(jFormattedTextField1_InscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel1_lbEmail))
-                    .addComponent(jTextField1_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jFormattedTextField1_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))))
-                .addGap(26, 26, 26)
+                            .addComponent(jLabel1)
+                            .addComponent(jFormattedTextField1_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1_lbEmail)
+                    .addComponent(jTextField1_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField1_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jTextField1_Bairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField1_Cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1_Consultar)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1_Salvar)
+                    .addComponent(jButton1_Consultar)
                     .addComponent(jButton2_Alterar)
                     .addComponent(jButton1_Cancelar))
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,8 +363,8 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,6 +376,53 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
 
     private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
     
+         jButton1_Salvar.setEnabled(true);
+        try{    
+            ControleCliente conexao = ControleCliente.getInstance();
+            String cnpj = jFormattedTextField1_CNPJ.getText();
+            String endereco = jTextField1_Endereco.getText();
+            String numero = jTextField1_Numero.getText();
+            String bairro = jTextField1_Bairro.getText();
+            String cidade = jTextField1_Cidade.getText();
+            String uf = jTextField1_UF.getText();
+            String cep = jFormattedTextField1_CEP.getText();
+            String nomeFantasia = jFormattedTextField1_NomeFantasia.getText();
+            String razaoSocial = jTextField1_RazaoSocial.getText();
+            String inscricaoEstadual = jFormattedTextField1_InscricaoEstadual.getText();
+            String email = jTextField1_Email.getText();
+            String contato = jFormattedTextField1_Contato.getText();
+            String id = jTextField_ID.getText();
+           
+
+            
+            ClientesJuridicos clienteJuridico = new ClientesJuridicos ( id, cnpj,  razaoSocial,  nomeFantasia,  inscricaoEstadual,  endereco,  numero,  bairro,  cidade,  uf,  cep,    email,  contato);
+            
+            conexao.incluirDadosPersistencia(clienteJuridico, 1);
+            
+            } catch (Exception erro) {
+            
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
+         jFormattedTextField1_CNPJ.setText("");
+                jFormattedTextField1_InscricaoEstadual.setText("");
+                jFormattedTextField1_NomeFantasia.setText("");
+                jFormattedTextField1_Contato.setText("");
+                jTextField1_RazaoSocial.setText("");
+                jTextField1_Email.setText("");
+                jFormattedTextField1_CEP.setText("");
+                jTextField1_UF.setText("");
+                jTextField1_Endereco.setText("");
+                jTextField1_Numero.setText("");
+                jTextField1_Bairro.setText("");
+                jTextField_ID.setText("");
+                jTextField1_Cidade.setText("");
+                
+                
+         jButton2_Alterar.setEnabled(false);
+        jButton1_Salvar.setEnabled(false);
+        
+        
     }//GEN-LAST:event_jButton1_SalvarActionPerformed
 
     private void jButton1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CancelarActionPerformed
@@ -374,7 +452,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             
                   for (ClientesJuridicos a :lista) {
                     
-                  modelo.addRow(new Object[]{a.getId(),a.getInscricaoEstadual(),a.getNomeFantasia()});
+                  modelo.addRow(new Object[]{a.getId(),a.getCnpj(),a.getNomeFantasia()});
    
                   }
        
@@ -388,33 +466,22 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     }//GEN-LAST:event_jButton1_ConsultarActionPerformed
 
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
-        jButton1_Salvar.setEnabled(true);
-        try{    
-            ControleCliente conexao = ControleCliente.getInstance();
-            String cnpj = jFormattedTextField1_CNPJ.getText();
-            String endereco = jTextField1_Endereco.getText();
-            String numero = jTextField1_Numero.getText();
-            String bairro = jTextField1_Bairro.getText();
-            String cidade = jTextField1_Cidade.getText();
-            String uf = jTextField1_UF.getText();
-            String cep = jFormattedTextField1_CEP.getText();
-            String nomeFantasia = jFormattedTextField1_NomeFantasia.getText();
-            String razaoSocial = jTextField1_RazaoSocial.getText();
-            String inscricaoEstadual = jFormattedTextField1_InscricaoEstadual.getText();
-            String email = jTextField1_Email.getText();
-            String contato = jFormattedTextField1_Contato.getText();
-            String id = jTextField_ID.getText();
-           
-
-            
-            ClientesJuridicos clienteJuridico = new ClientesJuridicos ( id, cnpj,  razaoSocial,  nomeFantasia,  inscricaoEstadual,  endereco,  numero,  bairro,  cidade,  uf,  cep,    email,  contato);
-            
-            conexao.incluirDadosPersistencia(clienteJuridico, 1);
-            
-            } catch (Exception erro) {
-            
-            JOptionPane.showMessageDialog(this, erro.getMessage());
-        }
+       jButton1_Salvar.setEnabled(true);
+       
+       jFormattedTextField1_CEP.setEditable(true);
+    jFormattedTextField1_CNPJ.setEditable(true);
+    jFormattedTextField1_Contato.setEditable(true);
+    jFormattedTextField1_InscricaoEstadual.setEditable(true);
+    jFormattedTextField1_NomeFantasia.setEditable(true);
+   
+    jTextField1_UF.setEditable(true);
+    jTextField1_RazaoSocial.setEditable(true);
+    jTextField1_Numero.setEditable(true);
+    jTextField1_Endereco.setEditable(true);
+    jTextField1_Email.setEditable(true);
+    jTextField1_Cidade.setEditable(true);
+    jTextField1_Bairro.setEditable(true);
+        
         
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
@@ -424,24 +491,33 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             if (b.toString() == a.getId().toString()){
                 
-                jFormattedTextField1_CNPJ.setValue(a.getCnpj());
-                jFormattedTextField1_InscricaoEstadual.setValue(a.getInscricaoEstadual());
-                jFormattedTextField1_NomeFantasia.setValue(a.getNomeFantasia());
-                jFormattedTextField1_Contato.setValue(a.getTelefone());
+                jFormattedTextField1_CNPJ.setText(a.getCnpj());
+                jFormattedTextField1_InscricaoEstadual.setText(a.getInscricaoEstadual());
+                jFormattedTextField1_NomeFantasia.setText(a.getNomeFantasia());
+                jFormattedTextField1_Contato.setText(a.getTelefone());
                 jTextField1_RazaoSocial.setText(a.getRazaoSocial());
                 jTextField1_Email.setText(a.getEmail());
-                jFormattedTextField1_CEP.setValue(a.getCep());
+                jFormattedTextField1_CEP.setText(a.getCep());
                 jTextField1_UF.setText(a.getUf());
                 jTextField1_Endereco.setText(a.getEndereco());
                 jTextField1_Numero.setText(a.getNumero());
                 jTextField1_Bairro.setText(a.getBairro());
                 jTextField_ID.setText(a.getId());
+                jTextField1_Cidade.setText(a.getCidade());
                 
     
                 
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jFormattedTextField1_ContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1_ContatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1_ContatoActionPerformed
+
+    private void jTextField1_CidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1_CidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1_CidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,6 +577,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -510,7 +587,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
     private javax.swing.JTextField jTextField1_Endereco;
     private javax.swing.JTextField jTextField1_Numero;
     private javax.swing.JTextField jTextField1_RazaoSocial;
-    private javax.swing.JTextField jTextField1_UF;
+    private javax.swing.JFormattedTextField jTextField1_UF;
     private javax.swing.JTextField jTextField_ID;
     // End of variables declaration//GEN-END:variables
 }
