@@ -11,8 +11,8 @@ package modelos;
  */
 public class ContratoLocacao extends Contrato implements Dados {
 
-    private int diasDeLocacao;
-    private double valorCaucao;
+    private Integer diasDeLocacao;
+    private Double valorCaucao;
     private String categoriaVeiculo;
 
     
@@ -26,35 +26,35 @@ public class ContratoLocacao extends Contrato implements Dados {
         this.categoriaVeiculo="";
         this.nomeFuncionario="";
         this.diasDeLocacao=0;
-        this.valorCaucao=0;
+        this.valorCaucao=0.0;
         
         
         
     }
     
-    public double CalcularCaucao(){
+    public Double CalcularCaucao(String tipoVeiculo, double quantidadeDias){
+        double valorDiaria = 0;
+        double recebeCaucao=0;
         
-        String recebeCaucao="";
-        
-        if(categoriaVeiculo == "Economico")
-       recebeCaucao = Integer.toString(diasDeLocacao * 66) ;
+      if(categoriaVeiculo == "Economico")
+       valorDiaria=66 ;
                
-       if (categoriaVeiculo == "Economico com Ar")
-           recebeCaucao = Integer.toString(diasDeLocacao * 69);
+      if (categoriaVeiculo == "Economico com Ar")
+           valorDiaria = 69;
        
-       if (categoriaVeiculo == "Intermediario")
-           recebeCaucao = Integer.toString(diasDeLocacao *81);
+      if (categoriaVeiculo == "Intermediario")
+           valorDiaria=81;
        
-       if (categoriaVeiculo =="SUV")
-           recebeCaucao = Integer.toString(diasDeLocacao * 113);
+      if (categoriaVeiculo =="SUV")
+           valorDiaria=113;
        
-       if (categoriaVeiculo=="4x4 Especial")
-           recebeCaucao = Integer.toString(diasDeLocacao*322);
-        
+      if (categoriaVeiculo=="4x4 Especial")
+           valorDiaria=322;
+        recebeCaucao = valorDiaria*quantidadeDias;
         return recebeCaucao;
     }
     
-    public ContratoLocacao(String id , String idCliente , String idVeiculo ,String categoriaVeiculo , String nomeFuncionario , String diasDeLocacao , String valorCaucao){
+    public ContratoLocacao(String id , String idCliente , String idVeiculo ,String categoriaVeiculo , String nomeFuncionario , Integer diasDeLocacao , String valorCaucao){
         
         this.id=id;
         this.idCliente=idCliente;
@@ -95,14 +95,14 @@ public class ContratoLocacao extends Contrato implements Dados {
     /**
      * @return the valorCaucao
      */
-    public String getValorCaucao() {
+    public Double getValorCaucao() {
         return valorCaucao;
     }
 
     /**
      * @param valorCaucao the valorCaucao to set
      */
-    public void setValorCaucao(String valorCaucao) {
+    public void setValorCaucao(Double valorCaucao) {
         this.valorCaucao = valorCaucao;
     }
     
