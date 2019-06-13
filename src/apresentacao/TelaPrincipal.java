@@ -45,6 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem9_ConsultaModelo = new javax.swing.JMenuItem();
         jMenuItem10_ConsultaMarca = new javax.swing.JMenuItem();
         jMenuItem5_ConsultaContratos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3_Contratos = new javax.swing.JMenu();
         jMenuItem1_Locacao = new javax.swing.JMenuItem();
         jMenuItem1_Venda = new javax.swing.JMenuItem();
@@ -166,8 +167,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2_Consulta.add(jMenuItem10_ConsultaMarca);
 
-        jMenuItem5_ConsultaContratos.setText("Contratos");
+        jMenuItem5_ConsultaContratos.setText("Contratos de Vendas");
+        jMenuItem5_ConsultaContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5_ConsultaContratosActionPerformed(evt);
+            }
+        });
         jMenu2_Consulta.add(jMenuItem5_ConsultaContratos);
+
+        jMenuItem1.setText("Contratos de Locação");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2_Consulta.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2_Consulta);
 
@@ -233,7 +247,7 @@ new TelaVeiculo().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+new TelaModelosCarro().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -267,6 +281,14 @@ new TelaConsultaAlteracaoVeiculos().setVisible(true);        // TODO add your ha
     private void jMenuItem10_ConsultaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10_ConsultaMarcaActionPerformed
 new TelaConsultaAlteracaoMarcas().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10_ConsultaMarcaActionPerformed
+
+    private void jMenuItem5_ConsultaContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5_ConsultaContratosActionPerformed
+new TelaConsultaAlteracaoContratoVenda().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5_ConsultaContratosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+new TelaLocacao().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +331,7 @@ new TelaConsultaAlteracaoMarcas().setVisible(true);        // TODO add your hand
     private javax.swing.JMenu jMenu2_Consulta;
     private javax.swing.JMenu jMenu3_Contratos;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10_ConsultaMarca;
     private javax.swing.JMenuItem jMenuItem1_CadastrarMotorista;
     private javax.swing.JMenuItem jMenuItem1_CadastroClienteFisico;
