@@ -6,16 +6,16 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modelos.ClientesJuridicos;
+import modelos.ContratoLocacao;
 import modelos.Dados;
-public class ControleClienteJuridico {
+public class ControleContratoLocacao {
 
-    private static ControleClienteJuridico objCtrl;
+    private static ControleContratoLocacao objCtrl;
     private ClienteTCP ligacaoCliente = null;
     private Object CharSource;
   
 
-    private ControleClienteJuridico() throws IOException {
+    private ControleContratoLocacao() throws IOException {
         ligacaoCliente = new ClienteTCP("127.0.0.1", 7777);
     }
 
@@ -33,16 +33,16 @@ public class ControleClienteJuridico {
         }
     }
     
-        public ArrayList<ClientesJuridicos> recuperar(String fr) throws Exception {
+        public ArrayList<ContratoLocacao> recuperar(String fr) throws Exception {
         try {
-            ArrayList<ClientesJuridicos> pilhaDeClientes = new ArrayList<>();
+            ArrayList<ContratoLocacao> pilhaDeClientes = new ArrayList<>();
             Reader targetReader = new StringReader(fr);
             BufferedReader br = new BufferedReader(targetReader);
             String linha = "";
             
             linha=br.readLine();
             while((linha=br.readLine())!=null){
-                ClientesJuridicos objetoClientes = new ClientesJuridicos();  
+                ContratoLocacao objetoClientes = new ContratoLocacao();  
                 objetoClientes.montarObjeto(linha);
                 pilhaDeClientes.add(objetoClientes);
             }
@@ -58,7 +58,7 @@ public class ControleClienteJuridico {
         
         try {
             Dados dado = (Dados) objeto;
-           String msg = "ClientesJuridicos#2#recebido";
+           String msg = "ContratoLocacao#2#recebido";
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
             System.out.println(msgRecebido);
@@ -71,9 +71,9 @@ public class ControleClienteJuridico {
     
     
     
-    public static ControleClienteJuridico getInstance() throws IOException{
+    public static ControleContratoLocacao getInstance() throws IOException{
         if(objCtrl == null){
-            objCtrl = new ControleClienteJuridico();
+            objCtrl = new ControleContratoLocacao();
         }
         return objCtrl;
     }

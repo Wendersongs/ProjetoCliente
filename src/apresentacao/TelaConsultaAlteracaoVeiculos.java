@@ -5,12 +5,22 @@
  */
 package apresentacao;
 
+import controle.ControleClienteJuridico;
+import controle.ControleVeiculos;
+import controle.Utils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.ClientesJuridicos;
+import modelos.Veiculos;
+
 /**
  *
  * @author Kevin
  */
 public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
-
+ArrayList<Veiculos> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /**
      * Creates new form TelaConsultaAlteracaoVeiculos
      */
@@ -18,6 +28,14 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
         initComponents();
         jButton2_Alterar.setEnabled(false);
         jButton1_Salvar.setEnabled(false);
+        
+    jComboBox1_Estado.setEnabled(false);
+    jComboBox1_Marca.setEnabled(false);
+    jComboBox2_Categoria.setEnabled(false);
+    jFormattedTextField1_Ano.setEnabled(false);
+    jFormattedTextField1_Placa.setEnabled(false);
+    jTextField1_Modelo.setEnabled(false);
+    jTextField2_EnderecoImagem.setEnabled(false);
     }
 
     /**
@@ -49,6 +67,10 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
         jButton2_Alterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jFormattedTextField1_ID = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jFormattedTextField1_Ano = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -120,13 +142,34 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel7.setText("ID:");
+
+        jLabel8.setText("Ano:");
+
+        try {
+            jFormattedTextField1_Ano.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextField1_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -153,37 +196,46 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBox1_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField1_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jTextField1_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(8, 8, 8)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextField1_Ano, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(jTextField2_EnderecoImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1_AnexarImagem)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField1_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(184, 184, 184))
+                        .addContainerGap(245, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jFormattedTextField1_Ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -233,7 +285,41 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
+         try{    
+            ControleVeiculos conexao = ControleVeiculos.getInstance();
+            
+            String id = jFormattedTextField1_ID.getText();
+            String modeloVeiculo = jTextField1_Modelo.getText();
+            String ano = jFormattedTextField1_Ano.getText();
+            String placa = jFormattedTextField1_Placa.getText();
+            String nomeDaMarca = (String) jComboBox1_Marca.getSelectedItem();
+            String categoria = (String) jComboBox2_Categoria.getSelectedItem();
+            String estado = (String) jComboBox1_Estado.getSelectedItem();
+            String enderecoAnexo = jTextField2_EnderecoImagem.getText();
+           
 
+            
+            Veiculos veiculo = new Veiculos ( id , placa , ano , estado , categoria , nomeDaMarca , modeloVeiculo , enderecoAnexo);
+            
+            conexao.incluirDadosPersistencia(veiculo, 1);
+            
+            } catch (Exception erro) {
+            
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
+         jFormattedTextField1_Ano.setText("");
+         jFormattedTextField1_ID.setText("");
+         jFormattedTextField1_Placa.setText("");
+         jTextField2_EnderecoImagem.setText("");
+         jTextField1_Modelo.setText("");
+         
+                
+                
+         jButton2_Alterar.setEnabled(false);
+        jButton1_Salvar.setEnabled(false);
+        
+        
     
 
     }//GEN-LAST:event_jButton1_SalvarActionPerformed
@@ -241,15 +327,60 @@ public class TelaConsultaAlteracaoVeiculos extends javax.swing.JFrame {
     private void jButton2_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_CancelarActionPerformed
 
       this.dispose();
-
     }//GEN-LAST:event_jButton2_CancelarActionPerformed
 
     private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
-jButton2_Alterar.setEnabled(true);        // TODO add your handling code here:
+jButton2_Alterar.setEnabled(true);       
+
+           jButton2_Alterar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        Veiculos veiculo = new Veiculos ();
+        
+        try {
+            ControleVeiculos conexao = ControleVeiculos.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(veiculo, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("Placa");
+            modelo.addColumn("Modelo");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (Veiculos a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getPlaca(),a.getModelo()});
+   
+                  }
+
+ 
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+            
+
+
     }//GEN-LAST:event_jButton1_ConsultarActionPerformed
 
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
-jButton1_Salvar.setEnabled(true);        // TODO add your handling code here:
+jButton1_Salvar.setEnabled(true);        
+
+    jComboBox1_Estado.setEnabled(true);
+    jComboBox1_Marca.setEnabled(true);
+    jComboBox2_Categoria.setEnabled(true);
+    jFormattedTextField1_Ano.setEnabled(true);
+    jFormattedTextField1_Placa.setEnabled(true);
+    jTextField1_Modelo.setEnabled(true);
+    jTextField2_EnderecoImagem.setEnabled(true);
+
+
+
+
+
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
     /**
@@ -296,6 +427,8 @@ jButton1_Salvar.setEnabled(true);        // TODO add your handling code here:
     private javax.swing.JComboBox jComboBox1_Estado;
     private javax.swing.JComboBox jComboBox1_Marca;
     private javax.swing.JComboBox jComboBox2_Categoria;
+    private javax.swing.JFormattedTextField jFormattedTextField1_Ano;
+    private javax.swing.JFormattedTextField jFormattedTextField1_ID;
     private javax.swing.JFormattedTextField jFormattedTextField1_Placa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -303,6 +436,8 @@ jButton1_Salvar.setEnabled(true);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

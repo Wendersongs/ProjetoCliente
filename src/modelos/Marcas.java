@@ -48,5 +48,14 @@ public class Marcas extends Marca implements Dados{
             throw new Exception("Erro no metodo montarObjeto da Marca");
         } 
     }
+
+    public String getNomeDaMarca() {
+        return nomeDaMarca;
+    }
+
+    public void setNomeDaMarca(String nomeDaMarca) {
+        this.nomeDaMarca = nomeDaMarca;
+    }
+    
     
 }

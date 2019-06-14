@@ -1,27 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controle;
-
 import comunicacao.ClienteTCP;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
-import modelos.ClientesFisicos;
+import javax.swing.JOptionPane;
 import modelos.ClientesFisicos;
 import modelos.Dados;
-
-/**
- *
- * @author Kevin
- */
 public class ControleClienteFisico {
-    
-     private static ControleClienteFisico objCtrl;
+
+    private static ControleClienteFisico objCtrl;
     private ClienteTCP ligacaoCliente = null;
     private Object CharSource;
   
@@ -29,11 +18,22 @@ public class ControleClienteFisico {
     private ControleClienteFisico() throws IOException {
         ligacaoCliente = new ClienteTCP("127.0.0.1", 7777);
     }
+
+    public void incluirDadosPersistencia(Object objeto, int operacao) throws Exception {
+        try {
+            String msg = objeto.getClass().getSimpleName() + "#" + operacao + "#";
+            Dados dado = (Dados) objeto;
+            msg += dado.desmontarObjeto();
+            JOptionPane.showMessageDialog(null, msg);
+            ligacaoCliente.enviarMensagem(msg);
+            String msgRecebido = ligacaoCliente.receberMensagem();
+            System.out.println(msgRecebido);
+        } catch (Exception erro) {
+            throw erro;
+        }
+    }
     
-    
-    
-    
-           public ArrayList<ClientesFisicos> recuperar(String fr) throws Exception {
+        public ArrayList<ClientesFisicos> recuperar(String fr) throws Exception {
         try {
             ArrayList<ClientesFisicos> pilhaDeClientes = new ArrayList<>();
             Reader targetReader = new StringReader(fr);
@@ -58,10 +58,10 @@ public class ControleClienteFisico {
         
         try {
             Dados dado = (Dados) objeto;
-           String msg = "ClientesFisicos#2#";
+           String msg = "ClientesFisicos#2#recebido";
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
-            System.out.println(msgRecebido);
+            
             return msgRecebido;
         } catch (Exception erro) {
             throw erro;
@@ -77,4 +77,5 @@ public class ControleClienteFisico {
         }
         return objCtrl;
     }
+
 }

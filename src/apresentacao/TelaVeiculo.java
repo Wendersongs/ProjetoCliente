@@ -231,7 +231,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
             ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
 
-            String nomeDaMarca = jComboBox1_Marca.getActionCommand();
+            String nomeDaMarca = (String)jComboBox1_Marca.getSelectedItem();
             String categoria = (String) jComboBox2_Categoria.getSelectedItem();
             String placa = jFormattedTextField1_Placa.getText();
             String estado = (String) jComboBox1_Estado.getSelectedItem();

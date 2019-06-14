@@ -25,8 +25,24 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
      */
     public TelaConsultaAlteracaoFisico() {
         initComponents();
+        jTable1.setRowSelectionAllowed(true);
         jButton1_Salvar.setEnabled(false);
         jButton2_Alterar.setEnabled(false);
+        
+        
+         jFormattedTextField10_UF.setEnabled(false);
+      jFormattedTextField11_Numero.setEnabled(false);
+      jFormattedTextField12_Bairro.setEnabled(false);
+      jFormattedTextField1_Nome.setEnabled(false);
+      jFormattedTextField2_CPF.setEnabled(false);
+      jFormattedTextField3_DataNascimento.setEnabled(false);
+      jFormattedTextField4_Celular.setEnabled(false);
+      jFormattedTextField5_Email.setEnabled(false);
+      jFormattedTextField6_Endereco.setEnabled(false);
+      jFormattedTextField7_Telefone.setEnabled(false);
+      jFormattedTextField9_Cidade.setEnabled(false);
+      jFormattedTextField8_CEP.setEnabled(false);
+      
     }
 
     /**
@@ -149,6 +165,11 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
         jLabel14.setText("Bairro:");
 
         jButton1_Salvar.setText("Salvar");
+        jButton1_Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_SalvarActionPerformed(evt);
+            }
+        });
 
         jButton2_Alterar.setText("Alterar");
         jButton2_Alterar.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +203,11 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel15.setText("ID:");
@@ -377,8 +403,59 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
       jButton1_Salvar.setEnabled(true);
       
-       try {
-            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+      jFormattedTextField10_UF.setEnabled(true);
+      jFormattedTextField11_Numero.setEnabled(true);
+      jFormattedTextField12_Bairro.setEnabled(true);
+      jFormattedTextField1_Nome.setEnabled(true);
+      jFormattedTextField2_CPF.setEnabled(true);
+      jFormattedTextField3_DataNascimento.setEnabled(true);
+      jFormattedTextField4_Celular.setEnabled(true);
+      jFormattedTextField5_Email.setEnabled(true);
+      jFormattedTextField6_Endereco.setEnabled(true);
+      jFormattedTextField7_Telefone.setEnabled(true);
+      jFormattedTextField9_Cidade.setEnabled(true);
+      jFormattedTextField8_CEP.setEnabled(true);
+      
+      
+      
+      
+    }//GEN-LAST:event_jButton2_AlterarActionPerformed
+
+    private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
+
+          jButton2_Alterar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        ClientesFisicos clienteFisico = new ClientesFisicos ();
+        
+        try {
+            ControleClienteFisico conexao = ControleClienteFisico.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(clienteFisico, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("CPF");
+            modelo.addColumn("Nome Completo");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (ClientesFisicos a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getCpf(),a.getNome()});
+   
+                  }
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+    }//GEN-LAST:event_jButton1_ConsultarActionPerformed
+
+    private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
+         try {
+            ControleClienteFisico conexao = ControleClienteFisico.getInstance();
             
             String nome = jFormattedTextField1_Nome.getText();
             String endereco = jFormattedTextField6_Endereco.getText();
@@ -416,52 +493,33 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
         }
-      
-      
-      
-      
-      
-      
-      
-    }//GEN-LAST:event_jButton2_AlterarActionPerformed
 
-    private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
+    }//GEN-LAST:event_jButton1_SalvarActionPerformed
 
-        jButton2_Alterar.setEnabled(true);
-        
-        
-        jTable1.setVisible(true);
-        String txt = "";
-        ClientesFisicos clienteFisico = new ClientesFisicos ();
-        
-        try {
-            ControleClienteFisico conexao = ControleClienteFisico.getInstance();
-            
-            txt = conexao.receberDadosPersistencia(clienteFisico, 2);
-            lista = conexao.recuperar(txt);
-            DefaultTableModel modelo = new DefaultTableModel();
-            modelo.addColumn("Identificador");
-            modelo.addColumn("cpf");
-            modelo.addColumn("Nome Completo");
-            jTable1.setModel(modelo);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
-            
-                  for (ClientesFisicos a :lista) {
-                    
-                  modelo.addRow(new Object[]{a.getId(),a.getCpf(),a.getNome()});
-   
-                  }
-       
-            
-            
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (ClientesFisicos a :lista) {
+            jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (b.toString() == a.getId().toString()){
+                
+                jFormattedTextField2_CPF.setText(a.getCpf());
+                jFormattedTextField10_UF.setText(a.getUf());
+                jFormattedTextField11_Numero.setText(a.getNumero());
+                jFormattedTextField12_Bairro.setText(a.getBairro());
+                jFormattedTextField1_ID.setText(a.getId());
+                jFormattedTextField1_Nome.setText(a.getNome());
+                jFormattedTextField3_DataNascimento.setText(a.getnascimento());
+                jFormattedTextField4_Celular.setText(a.getCelular());
+                jFormattedTextField5_Email.setText(a.getEmail());
+                jFormattedTextField6_Endereco.setText(a.getEndereco());
+                jFormattedTextField7_Telefone.setText(a.getTelefone());
+                jFormattedTextField9_Cidade.setText(a.getCidade());
+                jFormattedTextField8_CEP.setText(a.getCep());
+                jComboBox1_Sexo.setSelectedItem(a.getSexo());
   
- 
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(this, erro.getMessage());
+            }
         }
-    }//GEN-LAST:event_jButton1_ConsultarActionPerformed
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

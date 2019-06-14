@@ -5,12 +5,20 @@
  */
 package apresentacao;
 
+import controle.ControleContratoVenda;
+import controle.Utils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.ContratoVenda;
+
 /**
  *
  * @author Kevin
  */
 public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
-
+ArrayList<ContratoVenda> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /**
      * Creates new form TelaConsultaAlteracaoContratoVenda
      */
@@ -19,6 +27,14 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
         
         jButton1_Alterar.setEnabled(false);
         jButton1_Salvar.setEnabled(false);
+        
+        jFormattedTextField1_IdCliente.setEnabled(false);
+        jFormattedTextField1_NomeFuncionario.setEnabled(false);
+        jFormattedTextField2_DataVenda.setEnabled(false);
+        jFormattedTextField2_IdVeiculo.setEnabled(false);
+        jFormattedTextField2_ValorTotal.setEnabled(false);
+        jFormattedTextField1_ID.setEnabled(false); 
+        
     }
 
     /**
@@ -48,6 +64,8 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
         jButton2_Consultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jFormattedTextField1_ID = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,8 +121,18 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
         }
 
         jButton1_Alterar.setText("Alterar");
+        jButton1_Alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_AlterarActionPerformed(evt);
+            }
+        });
 
         jButton2_Consultar.setText("Consultar");
+        jButton2_Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2_ConsultarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,7 +145,14 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        jLabel7.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,16 +161,6 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jFormattedTextField1_NomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,6 +188,21 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jFormattedTextField1_NomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +214,10 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel2))
-                    .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -231,11 +274,98 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
 
     private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
       
+        try {
+            ControleContratoVenda conexao = ControleContratoVenda.getInstance();
+            
+            String id = jFormattedTextField1_ID.getText();
+            String idCliente = jFormattedTextField1_IdCliente.getText();
+            String idVeiculo = jFormattedTextField2_IdVeiculo.getText();
+            String nomeFuncionario = jFormattedTextField1_NomeFuncionario.getText();
+            String valorFinal = jFormattedTextField2_ValorTotal.getText();
+            String dataDaVenda = jFormattedTextField2_DataVenda.getText();
+            
+            
+            
+             ContratoVenda venda = new ContratoVenda (id , idCliente, idVeiculo , nomeFuncionario, valorFinal , dataDaVenda);
+            
+            conexao.incluirDadosPersistencia(venda, 1);
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
+        jFormattedTextField1_ID.setText("");
+        jFormattedTextField1_IdCliente.setText("");
+        jFormattedTextField1_NomeFuncionario.setText("");
+        jFormattedTextField2_DataVenda.setText("");
+        jFormattedTextField2_IdVeiculo.setText("");
+        jFormattedTextField2_ValorTotal.setText("");
+        
     }//GEN-LAST:event_jButton1_SalvarActionPerformed
 
     private void jButton2_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_CancelarActionPerformed
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();        
     }//GEN-LAST:event_jButton2_CancelarActionPerformed
+
+    private void jButton2_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_ConsultarActionPerformed
+      jButton1_Alterar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        ContratoVenda venda = new ContratoVenda ();
+        
+        try {
+            ControleContratoVenda conexao = ControleContratoVenda.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(venda, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("ID Cliente");
+            modelo.addColumn("ID Veiculo");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (ContratoVenda a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getIdCliente(),a.getIdVeiculo()});
+   
+                  }
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+    }//GEN-LAST:event_jButton2_ConsultarActionPerformed
+
+    private void jButton1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_AlterarActionPerformed
+      
+        jButton1_Salvar.setEnabled(true);
+        
+        jFormattedTextField1_IdCliente.setEnabled(true);
+        jFormattedTextField1_NomeFuncionario.setEnabled(true);
+        jFormattedTextField2_DataVenda.setEnabled(true);
+        jFormattedTextField2_IdVeiculo.setEnabled(true);
+        jFormattedTextField2_ValorTotal.setEnabled(true);
+        
+    }//GEN-LAST:event_jButton1_AlterarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (ContratoVenda a :lista) {
+            jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (b.toString() == a.getId().toString()){
+                jFormattedTextField1_IdCliente.setText(a.getIdCliente());
+                jFormattedTextField1_ID.setText(a.getIdVeiculo());
+                jFormattedTextField1_NomeFuncionario.setText(a.getNomeFuncionario());
+                jFormattedTextField2_DataVenda.setText(a.getDataDaVenda());
+                jFormattedTextField2_ValorTotal.setText(a.getValorFinal());
+                jFormattedTextField2_IdVeiculo.setText(a.getIdVeiculo());
+    
+                
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,6 +407,7 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
     private javax.swing.JButton jButton1_Salvar;
     private javax.swing.JButton jButton2_Cancelar;
     private javax.swing.JButton jButton2_Consultar;
+    private javax.swing.JFormattedTextField jFormattedTextField1_ID;
     private javax.swing.JFormattedTextField jFormattedTextField1_IdCliente;
     private javax.swing.JFormattedTextField jFormattedTextField1_NomeFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextField2_DataVenda;
@@ -288,6 +419,7 @@ public class TelaConsultaAlteracaoContratoVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

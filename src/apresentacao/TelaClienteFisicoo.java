@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package apresentacao;
+import controle.ControleClienteFisico;
 import controle.ControleClienteJuridico;
 import java.awt.HeadlessException;
 import java.io.IOException;
@@ -278,7 +279,8 @@ public class TelaClienteFisicoo extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1_Cadastrar)
-                    .addComponent(jButton2_Cancelar)))
+                    .addComponent(jButton2_Cancelar))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,9 +293,9 @@ public class TelaClienteFisicoo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -305,7 +307,7 @@ public class TelaClienteFisicoo extends javax.swing.JFrame {
 
     private void jButton1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CadastrarActionPerformed
         try {
-            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+            ControleClienteFisico conexao = ControleClienteFisico.getInstance();
             
             String nome = jFormattedTextField1_Nome.getText();
             String endereco = jFormattedTextField6_Endereco.getText();

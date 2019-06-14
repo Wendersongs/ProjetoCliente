@@ -6,17 +6,38 @@
 
 package apresentacao;
 
+import controle.ControleMotoristas;
+import controle.Utils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.Motoristas;
+
 /**
  *
  * @author Kevin
  */
 public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
-
+ArrayList<Motoristas> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /** Creates new form TelaConsultaAlteracaoMotorista */
     public TelaConsultaAlteracaoMotorista() {
         initComponents();
+        jTable1.setRowSelectionAllowed(true);
         jButton1_Alterar.setEnabled(false);
         jButton2_Salvar.setEnabled(false);
+        
+        
+        jTextField1_Nome.setEnabled(false);
+        jFormattedTextField1_CPF.setEnabled(false);
+        jFormattedTextField1_cnh.setEnabled(false);
+        jTextField1_enderecoFoto.setEnabled(false);
+        jFormattedTextField1_ID.setEnabled(false);
+        
+        
+        
+        
+        
     }
 
     /** This method is called from within the constructor to
@@ -44,6 +65,8 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jFormattedTextField1_ID = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -110,12 +133,28 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        jLabel5.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +172,8 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,46 +184,43 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
                                     .addComponent(jTextField1_enderecoFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1_AlterarFoto))
-                            .addComponent(jTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                    .addComponent(jLabel5)
+                    .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jFormattedTextField1_cnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1_AlterarFoto)
-                    .addComponent(jTextField1_enderecoFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2_Salvar)
-                    .addComponent(jButton3_Cancelar)
-                    .addComponent(jButton1_Consulta)
-                    .addComponent(jButton1_Alterar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedTextField1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextField1_cnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1_AlterarFoto)
+                            .addComponent(jTextField1_enderecoFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2_Salvar)
+                            .addComponent(jButton3_Cancelar)
+                            .addComponent(jButton1_Consulta)
+                            .addComponent(jButton1_Alterar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
 
@@ -209,9 +246,34 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
 
     private void jButton2_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_SalvarActionPerformed
 
-     
-
+        try {
+            
+            ControleMotoristas conexao = ControleMotoristas.getInstance();
+            
+            String id = jFormattedTextField1_ID.getText();
+            String nome = jTextField1_Nome.getText();
+            String cpf = jFormattedTextField1_CPF.getText();
+            String cnh = jFormattedTextField1_cnh.getText();
+            String enderecoAnexo = jTextField1_enderecoFoto.getText();
+            
+            
+            Motoristas motorista = new Motoristas(id ,nome , cpf , cnh , enderecoAnexo);
+            conexao.incluirDadosPersistencia(motorista , 1);
+            
+            
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
         
+        jFormattedTextField1_ID.setText("");
+        jTextField1_Nome.setText("");
+        jFormattedTextField1_CPF.setText("");
+        jFormattedTextField1_cnh.setText("");
+        jTextField1_enderecoFoto.setText("");
+        
+        jButton1_Alterar.setEnabled(false);
+        jButton2_Salvar.setEnabled(false);
 
     }//GEN-LAST:event_jButton2_SalvarActionPerformed
 
@@ -221,11 +283,67 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
 
     private void jButton1_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultaActionPerformed
         jButton1_Alterar.setEnabled(true);
+        
+         jButton1_Alterar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        Motoristas motorista = new Motoristas ();
+        
+        try {
+            ControleMotoristas conexao = ControleMotoristas.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(motorista, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("Cpf");
+            modelo.addColumn("Nome ");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (Motoristas a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getCpf(),a.getNome()});
+   
+                  }
+       
+            
+            
+  
+ 
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton1_ConsultaActionPerformed
 
     private void jButton1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_AlterarActionPerformed
         jButton2_Salvar.setEnabled(true);
+        
+        jTextField1_Nome.setEnabled(true);
+        jFormattedTextField1_CPF.setEnabled(true);
+        jFormattedTextField1_cnh.setEnabled(true);
+        jTextField1_enderecoFoto.setEnabled(true);
     }//GEN-LAST:event_jButton1_AlterarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (Motoristas a :lista) {
+            jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (b.toString() == a.getId().toString()){
+                
+                jFormattedTextField1_ID.setText(a.getId());
+                jTextField1_Nome.setText(a.getNome());
+                jFormattedTextField1_CPF.setText(a.getCpf());
+                jFormattedTextField1_cnh.setText(a.getCnh());
+                jTextField1_enderecoFoto.setText(a.getEnderecoAnexo());
+                
+                
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -269,11 +387,13 @@ public class TelaConsultaAlteracaoMotorista extends javax.swing.JFrame {
     private javax.swing.JButton jButton2_Salvar;
     private javax.swing.JButton jButton3_Cancelar;
     private javax.swing.JFormattedTextField jFormattedTextField1_CPF;
+    private javax.swing.JFormattedTextField jFormattedTextField1_ID;
     private javax.swing.JFormattedTextField jFormattedTextField1_cnh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

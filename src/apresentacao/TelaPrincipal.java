@@ -5,6 +5,9 @@
  */
 package apresentacao;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Kevin
@@ -255,7 +258,7 @@ new TelaMarca().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1_LocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_LocacaoActionPerformed
-new TelaLocacao().setVisible(true);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem1_LocacaoActionPerformed
 
     private void jMenuItem1_VendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_VendaActionPerformed
@@ -287,7 +290,11 @@ new TelaConsultaAlteracaoContratoVenda().setVisible(true);        // TODO add yo
     }//GEN-LAST:event_jMenuItem5_ConsultaContratosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-new TelaLocacao().setVisible(true);        // TODO add your handling code here:
+        try {
+            new TelaLocacao().setVisible(true);        // TODO add your handling code here:
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

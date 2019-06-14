@@ -1,4 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controle;
+
 import comunicacao.ClienteTCP;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,16 +12,21 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modelos.ClientesJuridicos;
+import modelos.Motoristas;
 import modelos.Dados;
-public class ControleClienteJuridico {
 
-    private static ControleClienteJuridico objCtrl;
+/**
+ *
+ * @author Kevin
+ */
+public class ControleMotoristas {
+    
+    private static ControleMotoristas objCtrl;
     private ClienteTCP ligacaoCliente = null;
     private Object CharSource;
   
 
-    private ControleClienteJuridico() throws IOException {
+    private ControleMotoristas() throws IOException {
         ligacaoCliente = new ClienteTCP("127.0.0.1", 7777);
     }
 
@@ -33,16 +44,16 @@ public class ControleClienteJuridico {
         }
     }
     
-        public ArrayList<ClientesJuridicos> recuperar(String fr) throws Exception {
+        public ArrayList<Motoristas> recuperar(String fr) throws Exception {
         try {
-            ArrayList<ClientesJuridicos> pilhaDeClientes = new ArrayList<>();
+            ArrayList<Motoristas> pilhaDeClientes = new ArrayList<>();
             Reader targetReader = new StringReader(fr);
             BufferedReader br = new BufferedReader(targetReader);
             String linha = "";
             
             linha=br.readLine();
             while((linha=br.readLine())!=null){
-                ClientesJuridicos objetoClientes = new ClientesJuridicos();  
+                Motoristas objetoClientes = new Motoristas();  
                 objetoClientes.montarObjeto(linha);
                 pilhaDeClientes.add(objetoClientes);
             }
@@ -58,7 +69,7 @@ public class ControleClienteJuridico {
         
         try {
             Dados dado = (Dados) objeto;
-           String msg = "ClientesJuridicos#2#recebido";
+           String msg = "Motoristas#2#recebido";
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
             System.out.println(msgRecebido);
@@ -71,11 +82,10 @@ public class ControleClienteJuridico {
     
     
     
-    public static ControleClienteJuridico getInstance() throws IOException{
+    public static ControleMotoristas getInstance() throws IOException{
         if(objCtrl == null){
-            objCtrl = new ControleClienteJuridico();
+            objCtrl = new ControleMotoristas();
         }
         return objCtrl;
     }
-
 }

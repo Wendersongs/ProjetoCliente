@@ -33,5 +33,9 @@ public class Utils {
 	                .replaceAll("[\\.\\;\\-\\_\\+\\'\\ª\\º\\:\\;\\/]","");
 	    	
 	}
-    
+   public String mascaraReais (String text){
+   text="R$ "+text+",00";
+   
+   return text;
+   }
 }

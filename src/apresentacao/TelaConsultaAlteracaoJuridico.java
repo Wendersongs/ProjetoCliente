@@ -115,11 +115,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1_Contato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1_ContatoActionPerformed(evt);
-            }
-        });
 
         jLabel1_lbEmail.setText("E-mail:");
 
@@ -150,11 +145,6 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
         jLabel7.setText("Cidade:");
 
         jTextField1_Cidade.setText(" ");
-        jTextField1_Cidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1_CidadeActionPerformed(evt);
-            }
-        });
 
         jButton1_Salvar.setText("Salvar");
         jButton1_Salvar.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +374,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
 
     private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
     
-         jButton1_Salvar.setEnabled(true);
+         
         try{    
             ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
             String cnpj = jFormattedTextField1_CNPJ.getText();
@@ -412,7 +402,7 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
             JOptionPane.showMessageDialog(this, erro.getMessage());
         }
         
-         jFormattedTextField1_CNPJ.setText("");
+                jFormattedTextField1_CNPJ.setText("");
                 jFormattedTextField1_InscricaoEstadual.setText("");
                 jFormattedTextField1_NomeFantasia.setText("");
                 jFormattedTextField1_Contato.setText("");
@@ -514,19 +504,12 @@ ArrayList<ClientesJuridicos> lista = new ArrayList<>();
                 jTextField_ID.setText(a.getId());
                 jTextField1_Cidade.setText(a.getCidade());
                 
+                
     
                 
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jFormattedTextField1_ContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1_ContatoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1_ContatoActionPerformed
-
-    private void jTextField1_CidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1_CidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1_CidadeActionPerformed
 
     /**
      * @param args the command line arguments
