@@ -6,7 +6,12 @@
 package apresentacao;
 
 import controle.ControleClienteJuridico;
+import controle.ControleMarcas;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modelos.Marcas;
 import modelos.ModelosCarro;
 
 /**
@@ -14,12 +19,28 @@ import modelos.ModelosCarro;
  * @author Kevin
  */
 public class TelaModelosCarro extends javax.swing.JFrame {
-
+ ArrayList<Marcas> lista = new ArrayList<>();
     /**
      * Creates new form TelaModelosCarro
      */
     public TelaModelosCarro() {
         initComponents();
+                Marcas marca = new Marcas();
+        String txt = "";
+    try {
+        ControleMarcas conexao = ControleMarcas.getInstance();
+        txt = conexao.receberDadosPersistencia(marca, 2);
+        lista = conexao.recuperar(txt);
+        for (Marcas a :lista) {
+                jComboBox1_Marca.addItem(a.getNomeDaMarca());
+               
+                  }
+        
+    
+    } catch (Exception ex) {
+        Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
     }
 
     /**
@@ -36,7 +57,7 @@ public class TelaModelosCarro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1_NomeModelo = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1_Marca = new javax.swing.JComboBox<>();
+        jComboBox1_Marca = new javax.swing.JComboBox<String>();
         jButton1_Cadastrar = new javax.swing.JButton();
         jButton2_Cancelar = new javax.swing.JButton();
 
@@ -59,8 +80,6 @@ public class TelaModelosCarro extends javax.swing.JFrame {
         jLabel2.setText("Nome do Modelo:");
 
         jLabel3.setText("Nome da Marca:");
-
-        jComboBox1_Marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1_Cadastrar.setText("Cadastrar");
         jButton1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +169,7 @@ this.dispose();        // TODO add your handling code here:
             
             jFormattedTextField1_NomeModelo.setText("");
             
-            
+           id=id; 
             
             
         } catch (Exception e) {
