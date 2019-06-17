@@ -21,6 +21,6 @@ public class ClienteTCP {
     } 
     
     public String receberMensagem() throws IOException{
-        return entrada.readUTF();
+            return entrada.readUTF();
     }
 }

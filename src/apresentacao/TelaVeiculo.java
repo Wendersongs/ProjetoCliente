@@ -260,7 +260,7 @@ ArrayList<Marcas> lista = new ArrayList<>();
             String modeloVeiculo = (String) jComboBox1_Modelo.getSelectedItem();
             String id = "";
 
-             Veiculos veiculo = new Veiculos ( id ,  placa , ano ,  estado , categoria ,nomeDaMarca , modeloVeiculo , enderecoAnexo);
+             Veiculos veiculo = new Veiculos ( id ,  placa , ano ,  estado , categoria ,nomeDaMarca , modeloVeiculo="Uno" , enderecoAnexo);
 
              conexao.incluirDadosPersistencia(veiculo , 1);
 

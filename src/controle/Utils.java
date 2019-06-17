@@ -34,7 +34,9 @@ public class Utils {
 	    	
 	}
    public String mascaraReais (String text){
-   text="R$ "+text+",00";
+   
+           
+           //"R$ "+text+",00";
    
    return text;
    }

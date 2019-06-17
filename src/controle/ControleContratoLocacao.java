@@ -24,10 +24,10 @@ public class ControleContratoLocacao {
             String msg = objeto.getClass().getSimpleName() + "#" + operacao + "#";
             Dados dado = (Dados) objeto;
             msg += dado.desmontarObjeto();
-            JOptionPane.showMessageDialog(null, msg);
+            
             ligacaoCliente.enviarMensagem(msg);
             String msgRecebido = ligacaoCliente.receberMensagem();
-            System.out.println(msgRecebido);
+            JOptionPane.showMessageDialog(null, msgRecebido);
         } catch (Exception erro) {
             throw erro;
         }

@@ -1,3 +1,6 @@
-1;aaa-1234;2006;Disponivel;Economico;Chevrolet;12345;A;aaa-1111;2006;Vendido;Economico com Ar;comboBoxChanged;Item 1;A;
-2;aaa-1232;2009;Disponivel;Economico com Ar;Chevrolet;Item 1;A;
-3;aaa-2222;2006;Disponivel;Economico;Chevrolet;Item 1;A;
+2;aaa-1232;2009;Disponivel;Economico com Ar;Chevrolet;Monza;A;
+4;www-3333;1996;Disponivel;Economico;Chevrolet;Astra;A;
+3;aaa-2222;2006;Indisponivel;Economico;Chevrolet;Astra;A;
+5;www-3333;1996;Disponivel;SUV;Chevrolet;Vectra;A;
+6;www-3333;1996;Disponivel;Economico com Ar;Fiat;Uno;A;
+7;www-3333;1996;Disponivel;Economico com Ar;Fiat;Uno;A;

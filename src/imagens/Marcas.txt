@@ -1,2 +1,0 @@
-1;Chevrolet;A#
-2;Fiat;A#
