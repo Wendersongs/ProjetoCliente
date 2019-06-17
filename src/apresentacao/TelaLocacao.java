@@ -317,7 +317,7 @@ try {
                       String idCliente = jFormattedTextField1_IdCliente.getText();
                       String categoria = jComboBox1_Categoria.getSelectedItem().toString();
                       String nomeFuncionario = jFormattedTextField1_NomeFuncionario.getText();
-                      Integer diasDeLocacao = Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
+                      Integer diasDeLocacao = 0;// Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
                       Double valorDaCaucao = 0.0;
 
 //                       String dados=jComboBox1.getSelectedItem().toString();
