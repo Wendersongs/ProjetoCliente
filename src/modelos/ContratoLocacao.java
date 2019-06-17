@@ -13,6 +13,20 @@ import static java.util.Arrays.equals;
  */
 public class ContratoLocacao extends Contrato implements Dados {
 
+    /**
+     * @return the categoriaVeiculo
+     */
+    public String getCategoriaVeiculo() {
+        return categoriaVeiculo;
+    }
+
+    /**
+     * @param categoriaVeiculo the categoriaVeiculo to set
+     */
+    public void setCategoriaVeiculo(String categoriaVeiculo) {
+        this.categoriaVeiculo = categoriaVeiculo;
+    }
+
     private Integer diasDeLocacao;
     private Double valorCaucao;
     private String categoriaVeiculo;
@@ -36,23 +50,23 @@ public class ContratoLocacao extends Contrato implements Dados {
     }
     
     public Double CalcularCaucao(String categoria, int quantidadeDias){
-        categoriaVeiculo=categoria;
+        setCategoriaVeiculo(categoria);
         double valorDiaria = 0;
         double recebeCaucao=0;
         
-      if(categoriaVeiculo.equals ("Economico"))
+      if(getCategoriaVeiculo().equals ("Economico"))
        valorDiaria=66 ;
                
-      if (categoriaVeiculo == "Economico com Ar")
+      if (getCategoriaVeiculo() == "Economico com Ar")
            valorDiaria = 69;
        
-      if (categoriaVeiculo == "Intermediario")
+      if (getCategoriaVeiculo() == "Intermediario")
            valorDiaria=81;
        
-      if (categoriaVeiculo =="SUV")
+      if (getCategoriaVeiculo() =="SUV")
            valorDiaria=113;
        
-      if (categoriaVeiculo=="4x4 Especial")
+      if (getCategoriaVeiculo()=="4x4 Especial")
            valorDiaria=322;
         recebeCaucao = valorDiaria*quantidadeDias;
         return recebeCaucao;
@@ -77,7 +91,7 @@ public class ContratoLocacao extends Contrato implements Dados {
     @Override
     public String desmontarObjeto() {
 
-        return this.id+";"+this.idCliente+";"+this.idVeiculo+";"+this.categoriaVeiculo+";"+this.nomeFuncionario+";"+this.diasDeLocacao+";"+this.valorCaucao;
+        return this.id+";"+this.idCliente+";"+this.idVeiculo+";"+this.getCategoriaVeiculo()+";"+this.nomeFuncionario+";"+this.diasDeLocacao+";"+this.valorCaucao;
     }
 
     @Override
@@ -88,7 +102,7 @@ public class ContratoLocacao extends Contrato implements Dados {
             this.id=vetorString[0];
             this.idCliente=vetorString[1];
             this.idVeiculo=vetorString[2];
-            this.categoriaVeiculo=vetorString[3];
+            this.setCategoriaVeiculo(vetorString[3]);
             this.nomeFuncionario=vetorString[4];
             this.diasDeLocacao=Integer.parseInt(vetorString[5]);
             this.valorCaucao=Double.parseDouble(vetorString[6]);

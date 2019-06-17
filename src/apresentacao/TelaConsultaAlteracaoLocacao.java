@@ -5,17 +5,39 @@
  */
 package apresentacao;
 
+import controle.ControleContratoLocacao;
+import controle.ControleMotoristas;
+import controle.Utils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.ContratoLocacao;
+
+
 /**
  *
  * @author Kevin
  */
 public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
-
+ArrayList<ContratoLocacao> lista = new ArrayList<>();
+  private Utils util = new Utils();
     /**
      * Creates new form TelaConsultaAlteracaoLocacao
      */
     public TelaConsultaAlteracaoLocacao() {
         initComponents();
+        
+        jButton1_Salvar.setEnabled(false);
+        jButton2_Alterar.setEnabled(false);
+        
+        jComboBox1_Categoria.setEnabled(false);
+        jFormattedTextField1_DiasDeLocacao.setEnabled(false);
+        jFormattedTextField1_IdVeiculo.setEnabled(false);
+        jFormattedTextField1_IdCliente.setEnabled(false);
+        jFormattedTextField1_NomeFuncionario.setEnabled(false);
+        jFormattedTextField1_ValorDaCaucao.setEnabled(false);
+       
+        jFormattedTextField1_ID.setEnabled(false);
     }
 
     /**
@@ -39,7 +61,6 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
         jComboBox1_Categoria = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextField1_IdVeiculo = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jFormattedTextField1_ValorDaCaucao = new javax.swing.JTextField();
         jButton2_Cancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -49,6 +70,8 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1_ConcluirContrato = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jFormattedTextField1_ID = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +108,11 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
         });
 
         jButton1_Consultar.setText("Consultar");
+        jButton1_Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_ConsultarActionPerformed(evt);
+            }
+        });
 
         jButton2_Alterar.setText("Alterar");
         jButton2_Alterar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,21 +140,34 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1_ConcluirContrato.setText("Concluir Contrato");
+        jButton1_ConcluirContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_ConcluirContratoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1_ConcluirContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(285, 285, 285))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,9 +177,6 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addComponent(jComboBox1_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,24 +203,27 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
                         .addComponent(jButton2_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1_ConcluirContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
-                    .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(jLabel8)
+                    .addComponent(jFormattedTextField1_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormattedTextField1_IdVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,9 +232,7 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))))
-                .addGap(6, 6, 6)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -221,7 +260,7 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
                     .addComponent(jButton2_Cancelar))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,30 +286,132 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
 
     private void jButton1_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_SalvarActionPerformed
 
+        try {
+           ControleMotoristas conexao = ControleMotoristas.getInstance();
+            
+            String id = jFormattedTextField1_ID.getText();
+            String idCliente = jFormattedTextField1_IdCliente.getText();
+            String idVeiculo = jFormattedTextField1_IdVeiculo.getText();
+            String categoria = (String)jComboBox1_Categoria.getSelectedItem();
+            String nomeFuncionario = jFormattedTextField1_NomeFuncionario.getText();
+            Integer diasDeLocacao = Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
+            Double valorCaucao = Double.parseDouble(jFormattedTextField1_ValorDaCaucao.getText());
+            
+            
+            ContratoLocacao locacao = new ContratoLocacao(id ,idCliente , idVeiculo , categoria , nomeFuncionario , diasDeLocacao , valorCaucao);
+            conexao.incluirDadosPersistencia(locacao , 1);
+            
+            
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
+        jFormattedTextField1_DiasDeLocacao.setText("");
+        jFormattedTextField1_ID.setText("");
+        jFormattedTextField1_IdCliente.setText("");
+        jFormattedTextField1_IdVeiculo.setText("");
+        jFormattedTextField1_NomeFuncionario.setText("");
+        jFormattedTextField1_ValorDaCaucao.setText("");
+        
+        
+        
+        jButton2_Alterar.setEnabled(false);
+        jButton1_Salvar.setEnabled(false);
+        
+        
         
     }//GEN-LAST:event_jButton1_SalvarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         
         
+         String b = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        for (ContratoLocacao a :lista) {
+            jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            if (b.toString() == a.getId().toString()){
+            
+                jFormattedTextField1_ID.setText(a.getId());
+                jFormattedTextField1_IdCliente.setText(a.getIdCliente());
+                jFormattedTextField1_IdVeiculo.setText(a.getIdVeiculo());
+                jComboBox1_Categoria.setSelectedItem(a.getCategoriaVeiculo());
+                jFormattedTextField1_NomeFuncionario.setText(a.getNomeFuncionario());
+                jFormattedTextField1_ValorDaCaucao.setText(Double.toString(a.getValorCaucao()));
+                jFormattedTextField1_DiasDeLocacao.setText(Integer.toString(a.getDiasDeLocacao()));
         
-        
-        
-        
-        
-        
-        
+            }
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_AlterarActionPerformed
        
+        jButton1_Salvar.setEnabled(true);
         
-        
-        
-        
-        
+        jComboBox1_Categoria.setEnabled(true);
+        jFormattedTextField1_DiasDeLocacao.setEnabled(true);
+        jFormattedTextField1_IdVeiculo.setEnabled(true);
+        jFormattedTextField1_IdCliente.setEnabled(true);
+        jFormattedTextField1_NomeFuncionario.setEnabled(true);
+        jFormattedTextField1_ValorDaCaucao.setEnabled(true);
         
     }//GEN-LAST:event_jButton2_AlterarActionPerformed
+
+    private void jButton1_ConcluirContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConcluirContratoActionPerformed
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1_ConcluirContratoActionPerformed
+
+    private void jButton1_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultarActionPerformed
+     
+         jButton2_Alterar.setEnabled(true);
+        
+         jButton1_Salvar.setEnabled(true);
+        jTable1.setVisible(true);
+        String txt = "";
+        ContratoLocacao locacao = new ContratoLocacao ();
+        
+        try {
+            ControleContratoLocacao conexao = ControleContratoLocacao.getInstance();
+            
+            txt = conexao.receberDadosPersistencia(locacao, 2);
+            lista = conexao.recuperar(txt);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Identificador");
+            modelo.addColumn("Id cliente");
+            modelo.addColumn("Id veiculo ");
+            jTable1.setModel(modelo);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);   //Tamanho da Coluna 1
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);    //Tamnaho da Coluna 2
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(190);  
+            
+                  for (ContratoLocacao a :lista) {
+                    
+                  modelo.addRow(new Object[]{a.getId(),a.getIdCliente(),a.getIdVeiculo()});
+   
+                  }
+       
+            
+            
+  
+ 
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1_ConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,9 +454,9 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
     private javax.swing.JButton jButton1_Salvar;
     private javax.swing.JButton jButton2_Alterar;
     private javax.swing.JButton jButton2_Cancelar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox1_Categoria;
     private javax.swing.JFormattedTextField jFormattedTextField1_DiasDeLocacao;
+    private javax.swing.JFormattedTextField jFormattedTextField1_ID;
     private javax.swing.JFormattedTextField jFormattedTextField1_IdCliente;
     private javax.swing.JFormattedTextField jFormattedTextField1_IdVeiculo;
     private javax.swing.JFormattedTextField jFormattedTextField1_NomeFuncionario;
@@ -327,6 +468,7 @@ public class TelaConsultaAlteracaoLocacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

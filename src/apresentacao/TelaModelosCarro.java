@@ -7,6 +7,7 @@ package apresentacao;
 
 import controle.ControleClienteJuridico;
 import controle.ControleMarcas;
+import controle.ControleModelos;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,9 +58,11 @@ public class TelaModelosCarro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1_NomeModelo = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1_Marca = new javax.swing.JComboBox<String>();
+        jComboBox1_Marca = new javax.swing.JComboBox<>();
         jButton1_Cadastrar = new javax.swing.JButton();
         jButton2_Cancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jFormattedTextField1_EnderecoAnexo = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +98,8 @@ public class TelaModelosCarro extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Endereco Anexo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,11 +115,14 @@ public class TelaModelosCarro extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFormattedTextField1_NomeModelo)
-                                    .addComponent(jComboBox1_Marca, 0, 126, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jFormattedTextField1_NomeModelo)
+                                        .addComponent(jComboBox1_Marca, 0, 126, Short.MAX_VALUE))
+                                    .addComponent(jFormattedTextField1_EnderecoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1_Cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,7 +148,11 @@ public class TelaModelosCarro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jComboBox1_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(90, 90, 90)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jFormattedTextField1_EnderecoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1_Cadastrar)
                             .addComponent(jButton2_Cancelar))
@@ -158,13 +170,14 @@ this.dispose();        // TODO add your handling code here:
     private void jButton1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_CadastrarActionPerformed
        
         try {
-             ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+             ControleModelos conexao = ControleModelos.getInstance();
             
             String id ="";
             String nomeDoModelo = jFormattedTextField1_NomeModelo.getText();
             String nomeDaMarca = (String)jComboBox1_Marca.getSelectedItem();
+            String enderecoAnexo = jFormattedTextField1_EnderecoAnexo.getText();
             
-            ModelosCarro modelos = new ModelosCarro(id , nomeDoModelo , nomeDaMarca);
+            ModelosCarro modelos = new ModelosCarro(id , nomeDoModelo , nomeDaMarca , enderecoAnexo);
             
             
             jFormattedTextField1_NomeModelo.setText("");
@@ -222,10 +235,12 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JButton jButton1_Cadastrar;
     private javax.swing.JButton jButton2_Cancelar;
     private javax.swing.JComboBox<String> jComboBox1_Marca;
+    private javax.swing.JFormattedTextField jFormattedTextField1_EnderecoAnexo;
     private javax.swing.JFormattedTextField jFormattedTextField1_NomeModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

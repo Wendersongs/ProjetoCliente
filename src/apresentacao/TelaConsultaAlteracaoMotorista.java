@@ -295,7 +295,7 @@ ArrayList<Motoristas> lista = new ArrayList<>();
     private void jButton1_ConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_ConsultaActionPerformed
         jButton1_Alterar.setEnabled(true);
         
-         jButton1_Alterar.setEnabled(true);
+         jButton2_Salvar.setEnabled(true);
         jTable1.setVisible(true);
         String txt = "";
         Motoristas motorista = new Motoristas ();
