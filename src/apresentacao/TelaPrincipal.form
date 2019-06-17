@@ -15,14 +15,14 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1_Cadastros">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/icons8-add-48.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastros"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1_CadastroClienteFisico">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/user_icon-icons.com_57997.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente Fisico"/>
               </Properties>
               <Events>
@@ -31,9 +31,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1_CadastroClienteJuridico">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/company_22169.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente Juridico"/>
               </Properties>
               <Events>
@@ -42,9 +39,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1_CadastrarMotorista">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/construction_project_plan_building_architect_design_develop-95_icon-icons.com_60215.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Motorista"/>
               </Properties>
               <Events>
@@ -53,9 +47,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/car_23964.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Veiculo"/>
               </Properties>
               <Events>
@@ -72,9 +63,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/travel_car_BMV_1741.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Marca"/>
               </Properties>
               <Events>
@@ -85,6 +73,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2_Consulta">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/icons8-edit-property-48.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consultas/Alteracoes"/>
           </Properties>
           <SubComponents>
@@ -124,6 +115,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modelo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9_ConsultaModeloActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10_ConsultaMarca">
               <Properties>
@@ -153,6 +147,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3_Contratos">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/icons8-document-48.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Contratos"/>
           </Properties>
           <SubComponents>
@@ -166,9 +163,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1_Venda">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/sale_25339.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Venda"/>
               </Properties>
               <Events>
@@ -225,15 +219,48 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="680" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="606" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="568" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="166" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="228" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="36" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Bem Vindo a&#xa;&#x9; JL : Rent a Car&#xa;&#xa;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Escolha uma das op&#xe7;&#xf5;es no menu acima para come&#xe7;ar"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

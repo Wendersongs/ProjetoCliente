@@ -171,20 +171,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1_Marca">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="12">
-                <StringItem index="0" value="Chevrolet"/>
-                <StringItem index="1" value="Citroen"/>
-                <StringItem index="2" value="Fiat"/>
-                <StringItem index="3" value="Ford"/>
-                <StringItem index="4" value="Honda"/>
-                <StringItem index="5" value="Hyundai"/>
-                <StringItem index="6" value="Jeep"/>
-                <StringItem index="7" value="Kia"/>
-                <StringItem index="8" value="Mitisubishi"/>
-                <StringItem index="9" value="Nissan"/>
-                <StringItem index="10" value="Peugeot"/>
-                <StringItem index="11" value="Renault"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
         </Component>
@@ -283,12 +270,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1_Modelo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>

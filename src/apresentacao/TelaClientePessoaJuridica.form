@@ -89,9 +89,9 @@
                   <Component id="jLabel2" min="-2" pref="57" max="-2" attributes="0"/>
                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                   <Component id="jTextField1_Endereco" min="-2" pref="260" max="-2" attributes="0"/>
-                  <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" pref="61" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextField1_Numero" min="-2" pref="64" max="-2" attributes="0"/>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" pref="33" max="-2" attributes="0"/>

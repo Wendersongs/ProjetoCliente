@@ -32,6 +32,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1_Cadastros = new javax.swing.JMenu();
         jMenuItem1_CadastroClienteFisico = new javax.swing.JMenuItem();
@@ -57,20 +59,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setText("Bem Vindo a\n\t JL : Rent a Car\n\n");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Escolha uma das opções no menu acima para começar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
+        jMenu1_Cadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-add-48.png"))); // NOI18N
         jMenu1_Cadastros.setText("Cadastros");
 
-        jMenuItem1_CadastroClienteFisico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user_icon-icons.com_57997.png"))); // NOI18N
         jMenuItem1_CadastroClienteFisico.setText("Cliente Fisico");
         jMenuItem1_CadastroClienteFisico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +99,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1_Cadastros.add(jMenuItem1_CadastroClienteFisico);
 
-        jMenuItem1_CadastroClienteJuridico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/company_22169.png"))); // NOI18N
         jMenuItem1_CadastroClienteJuridico.setText("Cliente Juridico");
         jMenuItem1_CadastroClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +107,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1_Cadastros.add(jMenuItem1_CadastroClienteJuridico);
 
-        jMenuItem1_CadastrarMotorista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/construction_project_plan_building_architect_design_develop-95_icon-icons.com_60215.png"))); // NOI18N
         jMenuItem1_CadastrarMotorista.setText("Motorista");
         jMenuItem1_CadastrarMotorista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +115,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1_Cadastros.add(jMenuItem1_CadastrarMotorista);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/car_23964.png"))); // NOI18N
         jMenuItem2.setText("Veiculo");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +131,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1_Cadastros.add(jMenuItem3);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/travel_car_BMV_1741.png"))); // NOI18N
         jMenuItem4.setText("Marca");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +141,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1_Cadastros);
 
+        jMenu2_Consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-edit-property-48.png"))); // NOI18N
         jMenu2_Consulta.setText("Consultas/Alteracoes");
 
         jMenuItem5_ConsultaClienteFisico.setText("Cliente Fisico");
@@ -160,6 +177,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2_Consulta.add(jMenuItem8_ConsultaVeiculo);
 
         jMenuItem9_ConsultaModelo.setText("Modelo");
+        jMenuItem9_ConsultaModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9_ConsultaModeloActionPerformed(evt);
+            }
+        });
         jMenu2_Consulta.add(jMenuItem9_ConsultaModelo);
 
         jMenuItem10_ConsultaMarca.setText("Marca");
@@ -188,6 +210,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2_Consulta);
 
+        jMenu3_Contratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-document-48.png"))); // NOI18N
         jMenu3_Contratos.setText("Contratos");
 
         jMenuItem1_Locacao.setText("Locacao");
@@ -198,7 +221,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu3_Contratos.add(jMenuItem1_Locacao);
 
-        jMenuItem1_Venda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sale_25339.png"))); // NOI18N
         jMenuItem1_Venda.setText("Venda");
         jMenuItem1_Venda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,12 +252,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1_CadastroClienteFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_CadastroClienteFisicoActionPerformed
-     
-    new TelaClienteFisicoo().setVisible(true);
-     
-    }//GEN-LAST:event_jMenuItem1_CadastroClienteFisicoActionPerformed
-
     private void jMenuItem1_CadastrarMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_CadastrarMotoristaActionPerformed
                     new TelaMotorista().setVisible(true);
     }//GEN-LAST:event_jMenuItem1_CadastrarMotoristaActionPerformed
@@ -258,7 +274,11 @@ new TelaMarca().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1_LocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_LocacaoActionPerformed
-        
+        try {
+            new TelaLocacao().setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1_LocacaoActionPerformed
 
     private void jMenuItem1_VendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_VendaActionPerformed
@@ -290,12 +310,18 @@ new TelaConsultaAlteracaoContratoVenda().setVisible(true);        // TODO add yo
     }//GEN-LAST:event_jMenuItem5_ConsultaContratosActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            new TelaLocacao().setVisible(true);        // TODO add your handling code here:
-        } catch (Exception ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+new TelaConsultaAlteracaoLocacao().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem9_ConsultaModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9_ConsultaModeloActionPerformed
+     new TelaConsultaAlteracaoModelosCarro().setVisible(true);
+    }//GEN-LAST:event_jMenuItem9_ConsultaModeloActionPerformed
+
+    private void jMenuItem1_CadastroClienteFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_CadastroClienteFisicoActionPerformed
+
+        new TelaClienteFisicoo().setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem1_CadastroClienteFisicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,6 +359,8 @@ new TelaConsultaAlteracaoContratoVenda().setVisible(true);        // TODO add yo
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1_Cadastros;
     private javax.swing.JMenu jMenu2_Consulta;

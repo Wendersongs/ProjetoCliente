@@ -6,6 +6,7 @@
 package apresentacao;
 
 import controle.ControleClienteJuridico;
+import controle.ControleContratoLocacao;
 import controle.ControleVeiculos;
 import javax.swing.JOptionPane;
 import modelos.ContratoLocacao;
@@ -33,6 +34,25 @@ ArrayList<Veiculos> lista = new ArrayList<>();
      */
     public TelaLocacao() throws Exception {
         initComponents();
+        
+               Veiculos veiculo = new Veiculos();
+        String txt = "";
+    try {
+        ControleVeiculos conexao = ControleVeiculos.getInstance();
+        txt = conexao.receberDadosPersistencia(veiculo, 2);
+        lista = conexao.recuperar(txt);
+        for (Veiculos a :lista) {
+                if (a.getEstado().equals("Disponivel")){
+                  jComboBox1.addItem(a.getNomeDaMarca()+" - "+a.getModeloVeiculo()+" - Placa: " + a.getPlaca() );
+                }
+                  }
+        
+    
+    } catch (Exception ex) {
+        Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+        
     }
 
     /**
@@ -61,7 +81,6 @@ ArrayList<Veiculos> lista = new ArrayList<>();
         jButton2_Cancelar = new javax.swing.JButton();
         jFormattedTextField1_ValorDaCaucao = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,17 +122,9 @@ ArrayList<Veiculos> lista = new ArrayList<>();
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "." }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -158,9 +169,7 @@ ArrayList<Veiculos> lista = new ArrayList<>();
                             .addGap(4, 4, 4)))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1_Categoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jComboBox1_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(110, 110, 110))
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,9 +179,8 @@ ArrayList<Veiculos> lista = new ArrayList<>();
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(35, 35, 35)
+                    .addComponent(jFormattedTextField1_IdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jFormattedTextField1_IdVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +204,7 @@ ArrayList<Veiculos> lista = new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1_FazerLocacao)
                     .addComponent(jButton2_Cancelar))
-                .addGap(0, 165, Short.MAX_VALUE))
+                .addGap(0, 166, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +235,8 @@ ArrayList<Veiculos> lista = new ArrayList<>();
          
           try {
             
-                        ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+                        ControleContratoLocacao conexao = ControleContratoLocacao.getInstance();
+                       
                         
                       String id = "";
                       String idCliente = jFormattedTextField1_IdCliente.getText();
@@ -236,10 +245,11 @@ ArrayList<Veiculos> lista = new ArrayList<>();
                       String nomeFuncionario = jFormattedTextField1_NomeFuncionario.getText();
                       Integer diasDeLocacao = Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
                       Double valorDaCaucao = Double.parseDouble(jFormattedTextField1_ValorDaCaucao.getText());
+                      
+                      
                        
-            ContratoLocacao locacao = new ContratoLocacao (id , idCliente, idVeiculo ,categoria , nomeFuncionario, diasDeLocacao , valorDaCaucao);
-                        
-                        
+            ContratoLocacao locacao = new ContratoLocacao (id , idCliente, idVeiculo ,categoria , nomeFuncionario, diasDeLocacao , valorDaCaucao );
+       
                         
                         
                         
@@ -270,28 +280,6 @@ ArrayList<Veiculos> lista = new ArrayList<>();
         String txt =locacao.CalcularCaucao(jComboBox1_Categoria.getSelectedItem().toString(), Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText())).toString();
         jFormattedTextField1_ValorDaCaucao.setText(util.mascaraReais(txt));
     }//GEN-LAST:event_jFormattedTextField1_DiasDeLocacaoFocusLost
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Veiculos veiculo = new Veiculos();
-        String txt = "";
-    try {
-        ControleVeiculos conexao = ControleVeiculos.getInstance();
-        txt = conexao.receberDadosPersistencia(veiculo, 2);
-        lista = conexao.recuperar(txt);
-        for (Veiculos a :lista) {
-                if (a.getEstado().equals("Disponivel")){
-                  jComboBox1.addItem(a.getNomeDaMarca()+" - "+a.getModeloVeiculo()+" - Placa: " + a.getPlaca() );
-                }
-                  }
-        
-    
-    } catch (Exception ex) {
-        Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
-    }
-        
-        
-    
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -337,7 +325,6 @@ ArrayList<Veiculos> lista = new ArrayList<>();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton1_FazerLocacao;
     private javax.swing.JButton jButton2_Cancelar;
     private javax.swing.JComboBox<String> jComboBox1;

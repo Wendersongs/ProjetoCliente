@@ -16,7 +16,7 @@ public class ContratoLocacao extends Contrato implements Dados {
     private Integer diasDeLocacao;
     private Double valorCaucao;
     private String categoriaVeiculo;
-
+    
     
     
     
@@ -29,6 +29,7 @@ public class ContratoLocacao extends Contrato implements Dados {
         this.nomeFuncionario="";
         this.diasDeLocacao=0;
         this.valorCaucao=0.0;
+        
         
         
         
@@ -57,7 +58,7 @@ public class ContratoLocacao extends Contrato implements Dados {
         return recebeCaucao;
     }
     
-    public ContratoLocacao(String id , String idCliente , String idVeiculo ,String categoriaVeiculo , String nomeFuncionario , Integer diasDeLocacao , Double valorCaucao){
+    public ContratoLocacao(String id , String idCliente , String idVeiculo ,String categoriaVeiculo , String nomeFuncionario , Integer diasDeLocacao , Double valorCaucao ){
         
         this.id=id;
         this.idCliente=idCliente;
@@ -66,6 +67,7 @@ public class ContratoLocacao extends Contrato implements Dados {
         this.nomeFuncionario=nomeFuncionario;
         this.diasDeLocacao=diasDeLocacao;
         this.valorCaucao=valorCaucao;
+       
     }
     
     
@@ -90,6 +92,7 @@ public class ContratoLocacao extends Contrato implements Dados {
             this.nomeFuncionario=vetorString[4];
             this.diasDeLocacao=Integer.parseInt(vetorString[5]);
             this.valorCaucao=Double.parseDouble(vetorString[6]);
+            
 
         } catch (Exception e) {
             throw new Exception("Erro no metodo montarObjeto do Cliente");
@@ -124,6 +127,11 @@ public class ContratoLocacao extends Contrato implements Dados {
     public void setValorCaucao(Double valorCaucao) {
         this.valorCaucao = valorCaucao;
     }
+
+    /**
+     * @return the estado
+     */
+  
     
   
 }

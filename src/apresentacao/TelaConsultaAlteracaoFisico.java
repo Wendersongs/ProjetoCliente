@@ -29,7 +29,7 @@ ArrayList<ClientesFisicos> lista = new ArrayList<>();
         jButton1_Salvar.setEnabled(false);
         jButton2_Alterar.setEnabled(false);
         
-        
+        jFormattedTextField1_ID.setEnabled(false);
          jFormattedTextField10_UF.setEnabled(false);
       jFormattedTextField11_Numero.setEnabled(false);
       jFormattedTextField12_Bairro.setEnabled(false);

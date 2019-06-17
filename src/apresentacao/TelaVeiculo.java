@@ -6,10 +6,16 @@
 package apresentacao;
 
 import controle.ControleClienteJuridico;
+import controle.ControleMarcas;
+import controle.ControleModelos;
+import controle.ControleVeiculos;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modelos.Marcas;
+import modelos.ModelosCarro;
 import modelos.Veiculos;
 
 /**
@@ -17,14 +23,32 @@ import modelos.Veiculos;
  * @author Kevin
  */
 public class TelaVeiculo extends javax.swing.JFrame {
+ArrayList<Marcas> lista = new ArrayList<>();
 
     /**
      * Creates new form TelaVeiculo
      */
     public TelaVeiculo() {
         initComponents();
-        
+                      Marcas marca = new Marcas();
+                      ModelosCarro modelos = new ModelosCarro();
+        String txt = "";
+    try {
+        ControleMarcas conexao = ControleMarcas.getInstance();
+        txt = conexao.receberDadosPersistencia(marca, 2);
+        lista = conexao.recuperar(txt);
+        for (Marcas a :lista) {
+                jComboBox1_Marca.addItem(a.getNomeDaMarca());
+               
+                  }
+    }catch(Exception e){
+         Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, e);
+    }
         jTextField2_EnderecoImagem.setText("A");
+    
+    
+
+        
     }
 
     /**
@@ -61,8 +85,6 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jLabel1.setText("Modelo:");
 
         jLabel2.setText("Marca:");
-
-        jComboBox1_Marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chevrolet", "Citroen", "Fiat", "Ford", "Honda", "Hyundai", "Jeep", "Kia", "Mitisubishi", "Nissan", "Peugeot", "Renault" }));
 
         jLabel3.setText("Categoria:");
 
@@ -108,8 +130,6 @@ public class TelaVeiculo extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        jComboBox1_Modelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,7 +249,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
         try {
 
-            ControleClienteJuridico conexao = ControleClienteJuridico.getInstance();
+            ControleVeiculos conexao = ControleVeiculos.getInstance();
 
             String nomeDaMarca = (String)jComboBox1_Marca.getSelectedItem();
             String categoria = (String) jComboBox2_Categoria.getSelectedItem();

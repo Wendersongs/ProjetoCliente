@@ -56,6 +56,10 @@ public class Marcas extends Marca implements Dados{
     public void setNomeDaMarca(String nomeDaMarca) {
         this.nomeDaMarca = nomeDaMarca;
     }
+
+    public String getModelo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
