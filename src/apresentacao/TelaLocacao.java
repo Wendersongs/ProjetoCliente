@@ -298,7 +298,7 @@ Veiculos veiculo = new Veiculos();
             jComboBox1.removeAllItems();
             for (Veiculos a :lista) {
                 if ((a.getEstado().equals("Disponivel"))&& (a.getCategoria().equals(jComboBox1_Categoria.getSelectedItem().toString()))){
-                  jComboBox1.addItem(a.getId()+"-"+a.getNomeDaMarca()+"-"+a.getModeloVeiculo()+"-Placa: " + a.getPlaca() );
+                  jComboBox1.addItem(a.getNomeDaMarca()+" - "+a.getModeloVeiculo()+" - Placa: " + a.getPlaca() );
                 }
             }
 
@@ -317,13 +317,13 @@ try {
                       String idCliente = jFormattedTextField1_IdCliente.getText();
                       String categoria = jComboBox1_Categoria.getSelectedItem().toString();
                       String nomeFuncionario = jFormattedTextField1_NomeFuncionario.getText();
-                      Integer diasDeLocacao = 0;//Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
+                      Integer diasDeLocacao = Integer.parseInt(jFormattedTextField1_DiasDeLocacao.getText());
                       Double valorDaCaucao = 0.0;
-                      //String dados=jComboBox1.getSelectedItem().toString();
+
+//                       String dados=jComboBox1.getSelectedItem().toString();
+//                      String[] informacao = dados.split("-");
+//                      String idVeiculo = informacao[0];
                       
-                     // String dados=jComboBox1.getSelectedItem().toString();
-                    //  String[] informacao = dados.split("-");
-                    //  String idVeiculo = informacao[0];
                       
                       String idVeiculo = "";
                       
